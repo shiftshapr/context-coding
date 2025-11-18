@@ -1,178 +1,63 @@
-# Agent 7: Types, Global, & Remaining Files
+# Agent Directory
 
-**Priority:** MEDIUM  
-**Objective:** Strategic `any` reduction in types/global + remaining files (133 `any` types → target: ~30)
+This is the canonical list of agents currently available in JAUmemory-based orchestration. Use it to select the right specialist when customizing workflows.
 
----
+## Core Workflow Agents (Default Order)
+| Agent ID | Role | Responsibilities |
+| --- | --- | --- |
+| `pm` | Project Manager | Problem analysis, requirements validation, create/maintain JAUmemory problem entry, plan diagnostics |
+| `sd` | Senior Developer | Solution design, diagnostic script creation, implementation, code walkthrough |
+| `test` | Test Engineer | Test strategy, edge cases, diagnostic execution before/after fixes |
+| `red` | Red-Line Auditor | Enforce non-negotiable policies, block releases on violations |
+| `white` | White-Hat Security | Authentication/authorization review, privacy, secure storage |
+| `purple` | Purple-Team Testing | Adversarial testing, attack simulation, failure injection |
+| `blindspot` | Blind-Spot Identifier | Surface hidden assumptions, race conditions, integration gaps |
+| `blue` | Blue-Hat Final Review | Consolidate findings, ensure all audits pass, update JAUmemory status, final approval |
+| `devops` | DevOps Engineer | Deployment planning, CI/CD, monitoring, rollback procedures |
+| `ethics` | Ethics & Compliance | Privacy, fairness, governance, accessibility checks |
 
-## 📁 Assigned Files
+## Orchestration & Strategy
+| Agent ID | Role | Responsibilities |
+| --- | --- | --- |
+| `orch` | Conductor (Orchestrator) | Initializes workflows, balances workloads, handles 8–10 parallel Orch sessions when tasks can be split |
+| `prod` | Product Strategist | Aligns work with user outcomes, metrics, and roadmap |
+| `doc` | Documentation Engineer | Writes/updates docs, tutorials, release notes, JAUmemory summaries |
+| `exp` | UX/UI Architect | Interaction design, accessibility, UX guardrails, visual consistency |
+| `refactor` | Refactor Engineer | Debt reduction, performance optimization, modularization |
+| `int` | Integration Engineer | API schemas, data pipelines, cross-service glue |
+| `blindspot` | Blind-Spot Analyst | Already listed above; double-emphasized due to importance |
 
-**Primary:**
-1. `presence/src/types/global.d.ts` (39 `any` - strategic reduction)
-2. `presence/src/types/index.ts` (17 `any`)
+## Security Suite
+| Agent ID | Role | Notes |
+| --- | --- | --- |
+| `red` | Critical constraint auditor | Stops work on policy breaches |
+| `white` | Security integrity | Threat modeling, auth flows |
+| `purple` | Adversarial tester | Attack simulations, fuzzing |
+| `blue` | Final QA/security gate | Signs off only when all others pass |
 
-**Secondary (10+ files, ~77 `any`):**
-3. `presence/src/features/APIModule.ts` (10 `any`)
-4. `presence/src/utils/UserPreferencesManager.ts` (6 `any`)
-5. `presence/src/utils/ReplyLoader.ts` (4 `any`)
-6. `presence/src/features/CommunitiesModule.ts` (5 `any`)
-7. `presence/src/features/UserHoverModal.ts` (5 `any`)
-8. `presence/src/utils/patches/ChatLoadingOverlayPatch.ts` (5 `any`)
-9. `presence/src/utils/provenance/init.ts` (4 `any`)
-10. Plus remaining smaller files (see full list in main prompt)
+## Diagnostics & Research
+| Agent ID | Role | Responsibilities |
+| --- | --- | --- |
+| `cr` | Code Researcher | Deep debugging, static analysis, runtime tracing |
+| `sd1`/`sd2`/`sd3`/`sd4` | System Debugger variants | Focus areas: architecture-first, cleanup, COMP compliance, frontend debugging |
+| `ta1`, `te1`, `te2`, `qa1` | Test/QA variants | Automation, chrome extensions, diagnostics, manual QA |
+| `blindspot` | Already above | – |
 
----
+## Additional Specialized Agents
+| Agent ID | Role | Responsibilities |
+| --- | --- | --- |
+| `devops` (legacy `de1`) | Ops engineer | Infrastructure, monitoring, security hardening |
+| `pm1` | Legacy PM | Older workflows; kept for compatibility |
+| `doc` | Documentation | Tutorials, knowledge transfer |
+| `code-reviewer` | Reviewer | Detailed code review focus |
+| `syntax fixer (sxf1)` | Syntax Fixer | Fast syntax cleanup |
+| `senior frontend developer` | Frontend specialist | CSS/UX enhancements |
+| `cross-profile sync specialist (cp1)` | Realtime sync | Multi-profile broadcast issues |
 
-## 🎯 Tasks
+## Using Agents Effectively
+- **Default workflow** already covers PM→ETHICS; invoke supplemental agents when domain needs extra depth (e.g., `refactor` for performance, `exp` for UX).
+- **Parallel orchestration**: ask `orch` to split large tasks into 8–10 subprompts with balanced scope.
+- **JAUmemory linking**: whenever an agent produces a major insight, link the memory with `agent_memory({ action: "link", agentId: "sd", memoryId: "mem-123" })`.
+- **Reflections**: encourage agents to log `agent_reflection` entries so they improve over time.
 
-### 1. global.d.ts (STRATEGIC REDUCTION)
-
-**Current Issues:**
-- Many `?: any` for integration objects
-- Diagnostic functions not fully typed
-- Some truly dynamic cases that can be more specific
-
-**Actions:**
-1. **Replace integration `any` types:**
-   - Create interfaces for integration objects:
-     ```typescript
-     interface AurasIntegration {
-       updateAura?: (userId: string, auraColor: string) => void;
-       getAura?: (userId: string) => Promise<string | null>;
-     }
-     
-     interface RobustIntegration {
-       sendMessage?: (message: Message) => Promise<void>;
-       // ... other methods
-     }
-     ```
-   - Replace `aurasIntegration?: any` → `aurasIntegration?: AurasIntegration`
-   - Do the same for `robustIntegration`, `reactionsIntegration`, etc.
-
-2. **Type diagnostic functions:**
-   - Use existing diagnostic result types from `utils/diagnostics/types.ts`
-   - Replace `runMessageDisplayDiagnostic?: () => Promise<any>` → `runMessageDisplayDiagnostic?: () => Promise<MessageDisplayDiagnosticResult>`
-   - Do the same for other diagnostic functions
-
-3. **Keep `any` for truly dynamic cases:**
-   - Keep `[key: string]: any` for dynamic properties
-   - Keep `any` for truly generic/unknown types
-   - Document why `any` is kept in comments
-
-**Target:** Reduce from 39 to 20-25 `any` (strategic reduction)
-
----
-
-### 2. types/index.ts
-
-**Current Issues:**
-- Some `any` in type exports
-- Type unions that could be more specific
-
-**Actions:**
-1. **Review all type exports:**
-   - Ensure all exported types are specific (not `any`)
-   - Remove `any` from type unions where possible
-   - Add missing type exports if needed
-
-2. **Type re-exports:**
-   - Ensure re-exports from other type files are properly typed
-   - No `any` in exported types
-
-**Target:** Reduce from 17 to <5 `any`
-
----
-
-### 3. APIModule.ts
-
-**Current Issues:**
-- API responses not typed
-- API options not typed
-
-**Actions:**
-1. **Type API responses:**
-   - Use `ApiResponse<T>` from `types/api.ts`
-   - Replace `response: any` → `response: ApiResponse<DataType>`
-   - Type all API method return types
-
-2. **Type API options:**
-   - Use `APIRequestOptions` from `types/api.ts`
-   - Replace `options?: any` → `options?: APIRequestOptions`
-
-**Success:** All API operations use typed responses
-
----
-
-### 4. UserPreferencesManager.ts
-
-**Current Issues:**
-- Some `any` in preference value handling
-- Already partially typed, finish the job
-
-**Actions:**
-1. **Complete preference typing:**
-   - Ensure `PreferenceValue` type is used everywhere
-   - Replace any remaining `any` with `PreferenceValue`
-   - Type all preference-related methods
-
-**Success:** All preferences fully typed
-
----
-
-### 5. Remaining Files (ReplyLoader, CommunitiesModule, etc.)
-
-**Actions:**
-1. **Type each file systematically:**
-   - `ReplyLoader.ts`: Type reply data with `Message` type
-   - `CommunitiesModule.ts`: Type community data with `Community` interface
-   - `UserHoverModal.ts`: Type user data with `User` type
-   - `ChatLoadingOverlayPatch.ts`: Type patch data
-   - `provenance/init.ts`: Type initialization data
-
-2. **Create missing types:**
-   - Create `Community` interface if not exists
-   - Create patch data interfaces
-   - Use existing types where available
-
-**Success:** All remaining files typed
-
----
-
-## ✅ RED-LINE Compliance
-
-- ❌ NO snake_case in type names
-- ❌ NO direct `window.property = value`
-- ❌ NO `(window as any)`
-- ✅ USE camelCase for all properties
-- ✅ STRATEGIC use of `any` only for truly dynamic cases
-- ✅ Document why `any` is kept in comments
-
----
-
-## 🧪 Verification
-
-After completion, run:
-```bash
-cd /home/ubuntu/metalayer-initiative
-npx tsc --noEmit
-grep -r ": any" presence/src/types/ presence/src/features/APIModule.ts presence/src/utils/UserPreferencesManager.ts presence/src/utils/ReplyLoader.ts presence/src/features/CommunitiesModule.ts presence/src/features/UserHoverModal.ts presence/src/utils/patches/ChatLoadingOverlayPatch.ts presence/src/utils/provenance/init.ts
-```
-
-**Target:** 
-- `global.d.ts`: 20-25 `any` (strategic)
-- `types/index.ts`: <5 `any`
-- Other files: <5 `any` each
-- **Total: ~30 `any` remaining**
-
----
-
-## 📝 Notes
-
-- **STRATEGIC APPROACH:** `global.d.ts` will always have some `any` for truly dynamic cases - that's OK
-- Check existing type definitions in `presence/src/types/`
-- Use `ApiResponse<T>` from `types/api.ts`
-- Use `Message`, `User`, `Preferences` from `types/index.ts`
-- Test compilation after each file
-- Document why `any` is kept in `global.d.ts`
-
-
+This directory will grow as new agents are added. Run `list_agents` via JAUmemory to see the full, real-time roster (including UUIDs and personality traits).
