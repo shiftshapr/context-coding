@@ -70,10 +70,10 @@ Red-line policies that are **automatically enforced** by all agents:
 - Window global null checks
 - Type guards instead of `any`
 
-### 3. Agents (16 Core Agents)
+### 3. Agents (17 Core Agents)
 **Location**: JAUmemory (query with `list_agents`)
 
-The system has **16 core agents** that cover all essential workflows. Additional specialized agents are available but these are the primary ones:
+The system has **17 core agents** that cover all essential workflows. Additional specialized agents are available but these are the primary ones:
 
 **Default Workflow Agents** (10 - executed in order):
 - `pm` (Project Manager) - Problem analysis, JAUmemory tracking, diagnostic planning
@@ -83,19 +83,26 @@ The system has **16 core agents** that cover all essential workflows. Additional
 - `white` (White-Hat Security) - Security review, authentication, privacy
 - `purple` (Purple-Team Testing) - Adversarial testing, attack simulation
 - `blindspot` (Blind-Spot Identifier) - Edge cases, race conditions, hidden assumptions
-- `blue` (Blue-Hat Final Review) - Final approval, JAUmemory status updates
+- `blue` (Blue-Hat Final Review) - Final approval, JAUmemory status updates, triggers learning phase
 - `devops` (DevOps Engineer) - Deployment, CI/CD, monitoring
 - `ethics` (Ethics & Compliance) - Privacy, fairness, governance
 
-**Specialized Agents** (6 - invoked as needed):
+**Specialized Agents** (7 - invoked as needed):
 - `orch` (Conductor) - Orchestrates workflows, handles parallelization (8-10 Orch sessions)
 - `cr` (Code Researcher) - Deep debugging, static analysis, runtime tracing
 - `refactor` (Refactor Engineer) - Code optimization, debt reduction, performance
 - `doc` (Documentation Engineer) - Technical writing, tutorials, knowledge transfer
 - `exp` (UX/UI Architect) - User experience, accessibility, interaction design
 - `ts` (TypeScript Specialist) - Type safety, migration, type system optimization
+- `meta` (Meta-Learning Agent) - Oversees learning process, identifies improvements to how we learn, monitors and intervenes when learning is ineffective
 
 **Note**: Additional specialized agents exist in JAUmemory for specific domains. Query `list_agents()` to see all available agents.
+
+**META Agent Special Role**:
+- **Automatic**: Runs after every learning phase to evaluate effectiveness
+- **Monitoring**: Watches entire process for learning opportunities
+- **Intervention**: Can be invoked when learning seems ineffective
+- **Improvement**: Proposes enhancements to learning system (JAUmemory structure, pattern detection, etc.)
 
 **Usage**: Agents are automatically invoked in the workflow. You can also:
 - Query agent memories: `agent_memory({ action: "recall", agentId: "sd" })`

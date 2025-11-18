@@ -356,11 +356,17 @@ get_collection({ collection_id: "coll-theme-789" })
   - Registers diagnostic scripts as reusable patterns
   - Proposes guardrail updates if needed
 
-**You'll see**: A "Learning Phase Report" in the final output showing:
-- Similar issues found
-- Pattern created/updated
-- Prevention strategies documented
-- Diagnostic patterns registered
+**You'll see**: 
+1. A "Learning Phase Report" in the final output showing:
+   - Similar issues found
+   - Pattern created/updated
+   - Prevention strategies documented
+   - Diagnostic patterns registered
+2. A "Meta-Learning Report" showing:
+   - Learning phase effectiveness assessment
+   - Learning gaps identified
+   - Proposed improvements to learning system
+   - Interventions made (if any)
 
 **To view patterns later**:
 ```

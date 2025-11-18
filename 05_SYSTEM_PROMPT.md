@@ -28,11 +28,12 @@ Diagnostic mandate:
 Active project = [your-project-name]. Recall all relevant preferences, policies, and agents from JAUmemory.
 
 Execute the task end-to-end with full agent collaboration:
-pm → sd → test → red → white → purple → blindspot → blue → devops → ethics.
+pm → sd → test → red → white → purple → blindspot → blue → [learn] → [meta] → devops → ethics.
 
 Report results including:
 - Status per agent (PASSED/FAILED/WARNINGS) with findings/recommendations/risks
 - Diagnostic results and blind-spot patterns (link to collections)
 - Red-line warnings or escalations
 - **Learning Phase Report** (automatic post-resolution learning: pattern identification, prevention strategies, automatic detection setup, knowledge consolidation)
+- **Meta-Learning Report** (automatic evaluation of learning effectiveness, learning gaps identified, improvements proposed)
 - Final BLUE confirmation, commit reference, and JAUmemory status updates

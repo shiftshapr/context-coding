@@ -6,7 +6,7 @@ graph TB
     CR[.cursorrules<br/>Red-line Policies] --> Cursor
     
     subgraph JM[JAUmemory]
-        Agents[16 Core Agents<br/>PM, SD, TEST, RED, WHITE,<br/>PURPLE, BLINDSPOT, BLUE,<br/>DEVOPS, ETHICS, ORCH,<br/>CR, REFACTOR, DOC, EXP, TS]
+        Agents[17 Core Agents<br/>PM, SD, TEST, RED, WHITE,<br/>PURPLE, BLINDSPOT, BLUE,<br/>DEVOPS, ETHICS, ORCH,<br/>CR, REFACTOR, DOC, EXP, TS, META]
         Memories[Memories & Collections]
         Prefs[Preferences & Policies<br/>Project Settings]
         WF[Default Workflow<br/>10-Agent Chain<br/>PM→SD→TEST→RED→WHITE→<br/>PURPLE→BLINDSPOT→BLUE→<br/>DEVOPS→ETHICS]
@@ -46,9 +46,9 @@ graph TB
 2. **System Prompt** - Orchestration trigger
 3. **.cursorrules** - Policy enforcement
 4. **JAUmemory** - Knowledge base containing:
-   - 16 core agents:
+   - 17 core agents:
      - **Workflow agents** (10): PM, SD, TEST, RED, WHITE, PURPLE, BLINDSPOT, BLUE, DEVOPS, ETHICS
-     - **Specialized agents** (6): ORCH (orchestration), CR (code research), REFACTOR (optimization), DOC (documentation), EXP (UX/UI), TS (TypeScript)
+     - **Specialized agents** (7): ORCH (orchestration), CR (code research), REFACTOR (optimization), DOC (documentation), EXP (UX/UI), TS (TypeScript), META (meta-learning/learning oversight)
    - Memories & Collections
    - Preferences & Policies (project-specific settings recalled at orchestration start)
    - Default Workflow (10-agent execution chain stored in JAUmemory)

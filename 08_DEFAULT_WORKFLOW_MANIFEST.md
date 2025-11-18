@@ -433,6 +433,104 @@ agent_reflection({
 - Collections updated
 - Agent memories updated
 
+### 8b. META (Meta-Learning Agent) - Learning Process Oversight
+**Role**: Oversees and improves the learning process itself
+**Trigger**: 
+- **Automatic**: After every learning phase (BLUE's post-resolution learning)
+- **On-demand**: When learning seems ineffective or patterns aren't being captured
+- **Periodic**: Weekly/monthly review of learning effectiveness
+
+**Responsibilities**:
+1. **Evaluate Learning Phase Effectiveness**:
+   - Review the learning phase report from BLUE
+   - Assess whether patterns were properly identified
+   - Check if similar issues were found comprehensively
+   - Verify that prevention strategies are actionable
+   - Confirm diagnostic patterns are registered correctly
+
+2. **Identify Learning Gaps**:
+   - Find cases where similar issues exist but weren't detected
+   - Identify patterns that should have been created but weren't
+   - Spot prevention strategies that are missing
+   - Notice when agent memories aren't being updated effectively
+
+3. **Propose Learning System Improvements**:
+   - Suggest enhancements to JAUmemory structure/organization
+   - Propose better pattern detection queries
+   - Recommend improvements to agent memory linking
+   - Suggest new collections or consolidation strategies
+   - Propose workflow changes to capture more learning
+
+4. **Monitor Process for Learning Opportunities**:
+   - Watch for recurring issues that should become patterns
+   - Identify blind spots in the learning process itself
+   - Notice when diagnostic scripts should be created but aren't
+   - Spot opportunities to improve pattern matching
+
+5. **Intervene When Learning is Ineffective**:
+   - When patterns aren't being created: suggest better pattern identification
+   - When similar issues aren't found: improve search queries
+   - When prevention strategies are weak: propose stronger guardrails
+   - When agent memories aren't updated: remind agents to link memories
+
+6. **Create Meta-Learning Insights**:
+   - Document what makes learning phases effective
+   - Identify characteristics of good pattern memories
+   - Track which prevention strategies work best
+   - Learn from learning failures
+
+**Required Actions**:
+```javascript
+// 1. Evaluate learning phase
+// Review BLUE's learning phase report
+// Check pattern quality, completeness, actionability
+
+// 2. Search for learning gaps
+recall({ 
+  query: "similar issues not detected OR patterns missed",
+  tags: ["learning-gap", "meta"]
+})
+
+// 3. Propose improvements
+remember({
+  content: "Learning System Improvement: [proposal]",
+  tags: ["meta-learning", "improvement", "system-enhancement"],
+  metadata: {
+    improvementType: "[pattern-detection|memory-structure|agent-linking|etc]",
+    rationale: "[why this improves learning]",
+    impact: "[expected improvement]"
+  }
+})
+
+// 4. Create meta-learning collection
+create_collection({
+  name: "Learning System Improvements",
+  description: "Proposed enhancements to how we learn from problems"
+})
+
+// 5. Link to learning phase
+agent_memory({
+  action: "link",
+  agentId: "meta",
+  memoryId: "learning-improvement-id",
+  category: "meta-learning",
+  projectContext: "[project-name]"
+})
+```
+
+**Output**: Meta-Learning Report including:
+- Learning phase effectiveness assessment
+- Learning gaps identified
+- Proposed improvements to learning system
+- Interventions made (if any)
+- Meta-learning insights
+
+**When to Invoke META**:
+- **Automatic**: After every learning phase (built into workflow)
+- **Manual**: "META, review the learning phase for problem [memoryId]"
+- **On-demand**: "META, we keep missing similar issues - how can we improve pattern detection?"
+- **Periodic**: "META, review our learning effectiveness over the past week"
+
 ### 9. DEVOPS (DevOps Engineer)
 **Role**: Deployment and operations
 **Responsibilities**:
@@ -460,10 +558,12 @@ agent_reflection({
 ## Workflow Execution Order
 
 ```
-PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → [LEARN] → DEVOPS → ETHICS
+PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → [LEARN] → [META] → DEVOPS → ETHICS
 ```
 
-**Note**: The `[LEARN]` phase is automatically executed by BLUE as part of the final review process. It is not a separate agent but a mandatory learning phase that BLUE must complete before final approval.
+**Note**: 
+- The `[LEARN]` phase is automatically executed by BLUE as part of the final review process. It is not a separate agent but a mandatory learning phase that BLUE must complete before final approval.
+- The `[META]` phase is automatically executed by META agent after the learning phase. META evaluates learning effectiveness and proposes improvements. META can also be invoked on-demand or periodically to review learning system effectiveness.
 
 ## Blind-Spot Audit Checklist
 - [ ] Are all edge cases covered?
@@ -509,4 +609,11 @@ All agents must PASS before BLUE can approve. Any FAILED agent requires fixes an
 1. Execute all 4 learning steps (Pattern Identification, Prevention Strategy, Automatic Detection, Knowledge Consolidation)
 2. Document findings in Learning Phase Report
 3. Only then provide final approval
+
+**META must evaluate the Learning Phase after BLUE completes it**. META's evaluation is automatic and mandatory - no user prompt required. META must:
+1. Review the Learning Phase Report for effectiveness
+2. Identify any learning gaps or missed opportunities
+3. Propose improvements to the learning system if needed
+4. Document findings in Meta-Learning Report
+5. Intervene if learning was ineffective (suggest improvements, re-run searches, etc.)
 
