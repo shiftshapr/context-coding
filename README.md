@@ -1,8 +1,11 @@
 # Context Coding Starter Kit
 
-**Start here**: Read `TOOLING_OVERVIEW.md` first for a complete guide to all available tools.
+**New here?** Start with `GETTING_STARTED.md` to download/clone this repository.
+
+**Ready to learn?** Read `TOOLING_OVERVIEW.md` first for a complete guide to all available tools.
 
 Contents of this directory:
+- `GETTING_STARTED.md` – **Start here** - How to get this repo (beginners & experienced users)
 - `TOOLING_OVERVIEW.md` – **Complete guide to all AI coding tools** (system prompt, Cursor rules, agents, JAUmemory, workflows, Git, ESLint)
 - `WORKFLOW_GUIDE.md` – **Step-by-step workflow** from task identification to completion (planning, execution, monitoring, troubleshooting)
 - `SYSTEM_PROMPT.md` – the orchestration system prompt you currently send.
