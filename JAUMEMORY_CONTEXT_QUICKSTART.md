@@ -2,13 +2,79 @@
 
 Step-by-step commands and examples for using JAUmemory in the orchestration workflow.
 
+## Setup: Configure Your Cursor Environment
+
+### Step 1: Authenticate with JAUmemory
+
+**Say to Cursor**:
+```
+I need to authenticate with JAUmemory. Can you help me log in using the MCP login function?
+```
+
+**Or if you have credentials ready**:
+```
+Authenticate me with JAUmemory. My username is [your-username] and email is [your-email].
+```
+
+**Cursor will**:
+- Call `mcp_jaumemory_mcp_login()` with your credentials
+- Provide a link to approve in your browser
+- Wait for you to click and approve
+- Complete authentication with the token you receive
+
+**After approval, say**:
+```
+Complete JAUmemory authentication with token [paste-token-here]
+```
+
+### Step 2: Verify JAUmemory is Working
+
+**Say to Cursor**:
+```
+Test JAUmemory by listing all available agents
+```
+
+**Or**:
+```
+Can you recall any memories about "preferences" in the [project-name] project?
+```
+
+**Expected response**: Cursor should list agents or return memory results. If it works, you're ready.
+
+### Step 3: Test Creating a Memory
+
+**Say to Cursor**:
+```
+Create a test memory in JAUmemory with content "Testing setup", tags ["test"], and importance 0.1
+```
+
+**Expected**: Memory created successfully with a memoryId returned.
+
+### Step 4: Verify You Can Query Memories
+
+**Say to Cursor**:
+```
+Search JAUmemory for any memories tagged with "test"
+```
+
+**Expected**: Your test memory appears in results.
+
+**If any step fails**: Check that JAUmemory MCP server is configured in Cursor settings and that you have valid credentials.
+
+---
+
 ## 1. Before Starting Any Task: Search for Existing Problems
 
 **Action**: Always search JAUmemory first to avoid duplicate work.
 
-**Command** (via Cursor or MCP):
+**Say to Cursor**:
 ```
-recall({ query: "theme saving bug", limit: 10 })
+Search JAUmemory for any existing problems about "theme saving" in the [project-name] project
+```
+
+**Or more specific**:
+```
+Recall memories about theme persistence bugs, limit to 10 results
 ```
 
 **What to look for**:
@@ -16,7 +82,10 @@ recall({ query: "theme saving bug", limit: 10 })
 - Related diagnostics that exist
 - Known blind spots in this area
 
-**If found**: Link to existing memory, don't create duplicate.
+**If found**: Say to Cursor:
+```
+Link this new problem to the existing memory [memoryId] and use that instead of creating a duplicate
+```
 
 **If not found**: Proceed to create new memory (step 2).
 
@@ -26,22 +95,20 @@ recall({ query: "theme saving bug", limit: 10 })
 
 **When**: You've identified a new problem and confirmed it doesn't exist in JAUmemory.
 
-**Command**:
+**Say to Cursor**:
 ```
-remember({
-  content: "Theme not saving to database in canopi extension",
-  context: "User toggles theme in UI, but preference doesn't persist after refresh",
-  tags: ["bug", "frontend", "preferences", "database"],
-  importance: 0.8,
-  metadata: {
-    status: "identified",
-    project: "canopi",
-    affectedFiles: ["presence/utils/UserPreferencesManager.js", "presence/sidepanel.js"],
-    impact: "Users lose theme preference on every refresh",
-    rootCause: "Unknown - diagnostic needed"
-  }
-})
+Create a new problem memory in JAUmemory:
+- Content: "Theme not saving to database in [project-name] extension"
+- Context: "User toggles theme in UI, but preference doesn't persist after refresh"
+- Tags: bug, frontend, preferences, database
+- Importance: 0.8
+- Status: identified
+- Project: [project-name]
+- Affected files: presence/utils/UserPreferencesManager.js, presence/sidepanel.js
+- Impact: Users lose theme preference on every refresh
 ```
+
+**Cursor will create the memory** with proper structure. **Save the memoryId** it returns - you'll need it for updates.
 
 **Required fields**:
 - `content`: Clear problem description
@@ -58,23 +125,18 @@ remember({
 
 **When**: SD agent has designed a solution.
 
-**Command**:
+**Say to Cursor**:
 ```
-update({
-  memoryId: "mem-abc-123",  // From step 2
-  content: "Theme not saving - SOLUTION: Use immediate save (batch: false) in VisibilitySettingsManager.saveTheme()",
-  importance: 0.8,
-  metadata: {
-    status: "proposed",
-    solution: "Add { batch: false } to saveTheme() and ProfileManager.toggleTheme()",
-    implementationPlan: "1. Update saveTheme() 2. Update toggleTheme() 3. Test persistence",
-    riskAssessment: "LOW - simple parameter change",
-    estimatedEffort: "15 minutes"
-  }
-})
+Update memory mem-abc-123 with:
+- New content: "Theme not saving - SOLUTION: Use immediate save (batch: false) in VisibilitySettingsManager.saveTheme()"
+- Status: proposed
+- Solution: "Add { batch: false } to saveTheme() and ProfileManager.toggleTheme()"
+- Implementation plan: "1. Update saveTheme() 2. Update toggleTheme() 3. Test persistence"
+- Risk: LOW - simple parameter change
+- Estimated effort: 15 minutes
 ```
 
-**Key change**: `metadata.status` = `"proposed"`
+**Key change**: Status moves from `"identified"` to `"proposed"`
 
 ---
 
@@ -137,22 +199,18 @@ update({
 
 **When**: Code is written and tested.
 
-**Command**:
+**Say to Cursor**:
 ```
-update({
-  memoryId: "mem-abc-123",
-  content: "Theme saving FIXED - Added immediate save in saveTheme() and toggleTheme()",
-  metadata: {
-    status: "implemented",
-    codeChanges: "Added { batch: false } parameter to save operations",
-    filesModified: ["presence/utils/UserPreferencesManager.js", "presence/sidepanel.js"],
-    testResults: "Theme persists after refresh - verified",
-    diagnosticResults: "All sources now consistent"
-  }
-})
+Update memory mem-abc-123:
+- Status: implemented
+- Content: "Theme saving FIXED - Added immediate save in saveTheme() and toggleTheme()"
+- Code changes: "Added { batch: false } parameter to save operations"
+- Files modified: presence/utils/UserPreferencesManager.js, presence/sidepanel.js
+- Test results: "Theme persists after refresh - verified"
+- Diagnostic results: "All sources now consistent"
 ```
 
-**Key change**: `metadata.status` = `"implemented"`
+**Key change**: Status moves from `"proposed"` to `"implemented"`
 
 ---
 
@@ -219,7 +277,7 @@ agent_memory({
   agentId: "blindspot",
   memoryId: "mem-blindspot-456",
   category: "learning",
-  projectContext: "canopi"
+  projectContext: "[project-name]"
 })
 ```
 
@@ -230,7 +288,7 @@ agent_memory({
   agentId: "sd",
   memoryId: "mem-abc-123",
   category: "solution",
-  projectContext: "canopi"
+  projectContext: "[project-name]"
 })
 ```
 

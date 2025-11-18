@@ -213,7 +213,54 @@ PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → DEVOP
 - Right-click files for context menu
 - Use terminal for npm/git commands
 
-### 8. Git & Rollbacks
+### 8. Browser Console (DevTools)
+**Purpose**: Capture runtime errors, network requests, state snapshots, and diagnostic data
+
+**How to Access**:
+- **Chrome/Edge**: F12 or Cmd+Option+I (Mac) / Ctrl+Shift+I (Windows/Linux)
+- **Firefox**: F12 or Cmd+Option+K (Mac) / Ctrl+Shift+K (Windows/Linux)
+- **Safari**: Cmd+Option+C (enable Developer menu first)
+
+**Key Tabs**:
+- **Console**: Errors, warnings, logged output, interactive JavaScript execution
+- **Network**: All HTTP requests, response times, failed requests, request/response payloads
+- **Application/Storage**: LocalStorage, SessionStorage, IndexedDB, Cookies
+- **Elements**: DOM inspection, computed styles, event listeners
+
+**When Reporting Bugs**:
+1. Open Console tab, filter by "Errors"
+2. Copy all red error messages with stack traces
+3. Check Network tab for failed requests (status 4xx/5xx)
+4. Include request URL, method, headers, and response body
+5. If state-related, run diagnostic commands and copy output
+
+**Say to Cursor**:
+```
+Fix [describe bug]. Browser console shows:
+[Paste errors, warnings, network failures, diagnostic output]
+```
+
+**Pro Tips**:
+- Use `console.table(array)` to format object arrays
+- Use `console.group()` to organize related logs
+- Export console: Right-click → "Save as..."
+- Use Network tab filters (XHR, Fetch, WS) to find API calls
+- Check "Preserve log" to keep logs across page reloads
+
+**Example Output to Include**:
+```
+Console Error:
+Error: Cannot read property 'theme' of undefined
+    at UserPreferencesManager.getPreference (UserPreferencesManager.js:45)
+    at ProfileManager.toggleTheme (ProfileManager.js:123)
+
+Network Failure:
+GET /api/v1/users/123 → 500 Internal Server Error
+Request Headers: { Authorization: "Bearer ..." }
+Response: {"error": "Database connection failed"}
+```
+
+### 9. Git & Rollbacks
 **Available Commands**:
 - `git status` - Check current state
 - `git diff` - See changes
@@ -233,7 +280,7 @@ PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → DEVOP
 - Include JAUmemory problem ID in commit message
 - Use branches for experimental changes
 
-### 9. ESLint Setup
+### 10. ESLint Setup
 **Location**: Repo root (`.eslintrc`, `package.json`)
 
 **Included in Repo**:

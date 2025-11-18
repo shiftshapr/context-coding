@@ -3,6 +3,8 @@ Orch, initialize orchestration using the Task Invocation Template.
 Objective:
 Fix [describe bug clearly].
 
+[If applicable, include browser console logs, errors, network failures, or diagnostic output here]
+
 Apply `.cursorrules` guardrails at every step:
 - TypeScript + ES6 modules only, modularized changes
 - No pre-launch backward-compat paths or fallbacks; remove duplicates instead
@@ -23,7 +25,7 @@ Diagnostic mandate:
 - TEST runs diagnostics before and after implementation
 - Attach script IDs/results + verification output to the problem memory; document any exception
 
-Active project = canopi. Recall all relevant preferences, policies, and agents from JAUmemory.
+Active project = [your-project-name]. Recall all relevant preferences, policies, and agents from JAUmemory.
 
 Execute the task end-to-end with full agent collaboration:
 pm → sd → test → red → white → purple → blindspot → blue → devops → ethics.
