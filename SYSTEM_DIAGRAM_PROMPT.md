@@ -8,13 +8,16 @@ graph TB
     subgraph JM[JAUmemory]
         Agents[16 Core Agents<br/>PM, SD, TEST, RED, WHITE,<br/>PURPLE, BLINDSPOT, BLUE,<br/>DEVOPS, ETHICS, ORCH,<br/>CR, REFACTOR, DOC, EXP, TS]
         Memories[Memories & Collections]
+        Prefs[Preferences & Policies<br/>Project Settings]
         WF[Default Workflow<br/>10-Agent Chain<br/>PM→SD→TEST→RED→WHITE→<br/>PURPLE→BLINDSPOT→BLUE→<br/>DEVOPS→ETHICS]
     end
     
     Cursor -->|Orchestrates| Agents
     Cursor -->|Recalls| WF
+    Cursor -->|Recalls| Prefs
     Agents -->|Store| Memories
     Memories -->|Recall| Cursor
+    Prefs -->|Project Context| Cursor
     WF -->|Execution Order| Cursor
     
     BC[Browser Console<br/>DevTools] -->|Logs/Errors| SP
@@ -47,6 +50,7 @@ graph TB
      - **Workflow agents** (10): PM, SD, TEST, RED, WHITE, PURPLE, BLINDSPOT, BLUE, DEVOPS, ETHICS
      - **Specialized agents** (6): ORCH (orchestration), CR (code research), REFACTOR (optimization), DOC (documentation), EXP (UX/UI), TS (TypeScript)
    - Memories & Collections
+   - Preferences & Policies (project-specific settings recalled at orchestration start)
    - Default Workflow (10-agent execution chain stored in JAUmemory)
 5. **Browser Console** - Runtime diagnostics
 6. **Git** - Version control (with revert/rollback capability)
