@@ -12,22 +12,26 @@ CENTRAL: Cursor IDE (large box in center) with "Multi-Agent Orchestration" label
 CONNECTED TO CURSOR (radiating outward):
 1. System Prompt (top) - text bubble with "Orch, initialize..." 
 2. .cursorrules (top-right) - policy document icon
-3. JAUmemory (right) - database/cloud icon with "47 Agents" and "Memories/Collections" labels
+3. JAUmemory (right) - database/cloud icon containing:
+   - "47 Agents" label
+   - "Memories/Collections" label
+   - "Default Workflow" embedded inside showing "PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → DEVOPS → ETHICS"
 4. Browser Console (bottom-right) - DevTools window showing console/network tabs
 5. Git Repository (bottom) - git branch icon with commit history
 6. ESLint (bottom-left) - linting/checkmark icon
 7. Text Replacement Tool (left) - keyboard shortcut icon with ";orch" label
-8. Default Workflow (top-left) - flowchart showing "PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → DEVOPS → ETHICS"
+8. Cursor Revert (left-center) - undo/rollback icon with "Manual AI Undo" label
 
 DATA FLOW ARROWS:
 - System Prompt → Cursor (thick arrow)
 - .cursorrules → Cursor (enforcement arrow)
-- Cursor → JAUmemory (bidirectional, problem tracking)
+- Cursor ↔ JAUmemory (bidirectional, problem tracking, workflow recall)
 - Browser Console → System Prompt (diagnostic data)
 - Cursor → Git (commit arrow)
+- Git → Cursor (revert/rollback arrow)
+- Cursor → Cursor Revert (undo AI changes arrow)
 - ESLint → Cursor (error feedback)
 - Text Replacement → System Prompt (expansion)
-- Workflow → Cursor (execution order)
 
 STYLE:
 - Clean, modern, technical diagram
@@ -47,11 +51,18 @@ If you prefer a text-based diagram that can be rendered in Markdown:
 graph TB
     SP[System Prompt<br/>;orch shortcut] --> Cursor
     CR[.cursorrules<br/>Red-line Policies] --> Cursor
-    WF[Default Workflow<br/>10-Agent Chain] --> Cursor
     
-    Cursor -->|Orchestrates| Agents[47 JAUmemory Agents<br/>PM, SD, TEST, RED, etc.]
-    Agents -->|Store| JM[JAUmemory<br/>Memories & Collections]
-    JM -->|Recall| Cursor
+    subgraph JM[JAUmemory]
+        Agents[47 Agents<br/>PM, SD, TEST, RED, etc.]
+        Memories[Memories & Collections]
+        WF[Default Workflow<br/>10-Agent Chain<br/>PM→SD→TEST→RED→WHITE→<br/>PURPLE→BLINDSPOT→BLUE→<br/>DEVOPS→ETHICS]
+    end
+    
+    Cursor -->|Orchestrates| Agents
+    Cursor -->|Recalls| WF
+    Agents -->|Store| Memories
+    Memories -->|Recall| Cursor
+    WF -->|Execution Order| Cursor
     
     BC[Browser Console<br/>DevTools] -->|Logs/Errors| SP
     SP -->|Includes| BC
@@ -60,6 +71,9 @@ graph TB
     ESLint -->|Feedback| Cursor
     
     Cursor -->|Commits| Git[Git Repository<br/>Version Control]
+    Git -->|Revert/Rollback| Cursor
+    
+    Cursor -->|Undo AI Changes| Revert[Cursor Revert<br/>Manual AI Undo]
     
     TR[Text Replacement<br/>;orch expansion] -->|Loads| SP
     
@@ -67,6 +81,7 @@ graph TB
     style JM fill:#9B59B6,stroke:#6C3483,stroke-width:2px,color:#fff
     style Agents fill:#E74C3C,stroke:#C0392B,stroke-width:2px,color:#fff
     style SP fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#fff
+    style Revert fill:#E67E22,stroke:#D35400,stroke-width:2px,color:#fff
 ```
 
 ## Components to Include
@@ -74,19 +89,23 @@ graph TB
 1. **Cursor IDE** - Central hub
 2. **System Prompt** - Orchestration trigger
 3. **.cursorrules** - Policy enforcement
-4. **JAUmemory** - Knowledge base (47 agents, memories, collections)
+4. **JAUmemory** - Knowledge base containing:
+   - 47 agents (PM, SD, TEST, RED, WHITE, PURPLE, BLINDSPOT, BLUE, DEVOPS, ETHICS, etc.)
+   - Memories & Collections
+   - Default Workflow (10-agent execution chain stored in JAUmemory)
 5. **Browser Console** - Runtime diagnostics
-6. **Git** - Version control
-7. **ESLint** - Code quality
-8. **Text Replacement** - Productivity shortcut
-9. **Default Workflow** - 10-agent execution chain
+6. **Git** - Version control (with revert/rollback capability)
+7. **Cursor Revert** - Manual AI undo/rollback feature
+8. **ESLint** - Code quality
+9. **Text Replacement** - Productivity shortcut
 
 ## Visual Style Notes
 
 - Use consistent iconography
 - Show bidirectional data flow where applicable
 - Highlight Cursor as the central orchestrator
-- Use color coding: Blue (Cursor), Purple (JAUmemory), Red (Agents), Green (System Prompt)
+- Use color coding: Blue (Cursor), Purple (JAUmemory), Red (Agents), Green (System Prompt), Orange (Cursor Revert)
+- Show Default Workflow as embedded within JAUmemory, not as separate component
 - Include labels for clarity
 - Show both setup phase (configuration) and runtime phase (execution)
 
