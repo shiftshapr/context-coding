@@ -17,5 +17,6 @@ Contents of this directory (read in order):
 - `09_JAUMEMORY_CONTEXT_QUICKSTART.md` – practical guide for problem cataloging, diagnostics, blind-spot tracking, and memory consolidation.
 - `10_AGENT_DESCRIPTIONS.md` – agent roles/responsibilities reference.
 - `11_SYSTEM_DIAGRAM_PROMPT.md` – Visual diagram generation prompt
+- `12_GENERAL_TOOL_USAGE.md` – **Load into JAUmemory** - General tool usage memories as a collection (non-project-specific workflow knowledge)
 
 Share this folder with collaborators so they have the minimum context to execute the workflow end-to-end.

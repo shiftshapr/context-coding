@@ -85,12 +85,35 @@ Using the contextcoding directory as reference:
 1. Open Cursor command palette → `JAUmemory: Authenticate`
 2. Provide credentials when prompted
 3. Test with: "Recall any memories about [your-project-name]"
-4. Create a collection for your work stream if needed
+4. **Load General Tool Usage Collection** (see step 6a below)
+5. Create a collection for your work stream if needed
 
 **Say to Cursor**:
 ```
 Test JAUmemory by listing all available agents and creating a test memory for project [your-project-name]
 ```
+
+### 6a. Load General Tool Usage Collection
+
+**Important**: Load the general tool usage memories to have a reference guide for workflow features.
+
+**Say to Cursor**:
+```
+I want to load the general tool usage memories from 12_GENERAL_TOOL_USAGE.md into JAUmemory as a collection.
+
+Please:
+1. Read 12_GENERAL_TOOL_USAGE.md from the contextcoding directory
+2. Create a collection named "General Tool Usage & Workflow" with description "Non-project-specific memories about how to use the contextcoding workflow, learning system, agents, and tools. Reference guide for general workflow features."
+3. Create each of the 10 memories listed in the document with their tags, importance, context, and metadata
+4. Add all memories to the collection
+5. Confirm when complete with the collection ID
+```
+
+**What this does**:
+- Loads 10 general workflow memories into JAUmemory
+- Creates a collection for easy reference
+- Provides knowledge about learning phase, META agent, workflow order, agents, patterns, etc.
+- Ensures consistency across projects
 
 ## 7. Set Up Text Replacement for System Prompt (Recommended)
 
