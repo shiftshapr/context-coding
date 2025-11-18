@@ -322,9 +322,18 @@ Please:
 - ✅ Problem solved or feature implemented
 - ✅ All tests pass
 - ✅ Diagnostic scripts verify the fix
+- ✅ **Learning Phase Report generated** (automatic - BLUE executes post-resolution learning)
 - ✅ JAUmemory entry updated to "solved"
+- ✅ Pattern memories created/updated (for prevention and auto-detection)
 - ✅ BLUE agent has approved
 - ✅ Code committed with JAUmemory ID in commit message
+
+**Note**: The Learning Phase happens automatically after BLUE verifies the fix. You'll see a "Learning Phase Report" in the final output showing:
+- Similar issues found in codebase and JAUmemory
+- Pattern created/updated for future prevention
+- Prevention strategies documented
+- Diagnostic patterns registered for auto-detection
+- Collections updated (Pattern Library, Blind-Spot Patterns, Diagnostic Patterns)
 
 ---
 
