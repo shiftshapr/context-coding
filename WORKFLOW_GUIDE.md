@@ -19,6 +19,11 @@ The workflow follows this pattern:
 - "Refactor authentication module to use TypeScript"
 - "Create diagnostic script for network failures"
 
+**Check JAUmemory Collections**:
+- Look for a "Bike Rack" collection (or similar task backlog collection) in JAUmemory
+- This collection contains tasks/issues you want to tackle
+- Query: `get_collection({ collection_id: "bike-rack-collection-id" })` or search for "bike rack" collection
+
 **Say to Cursor** (if you need help clarifying):
 ```
 I want to [describe task]. Help me identify the specific problem/feature and what success looks like.
