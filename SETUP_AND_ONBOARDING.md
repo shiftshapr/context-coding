@@ -39,35 +39,59 @@ npm run lint   # ensure ESLint works
 3. Test with `recall({ query: "preferences" })`
 4. Create a collection for your work stream if needed
 
-## 6. Using the System Prompt
-1. Copy `docs/SYSTEM_PROMPT.md`
+## 6. Set Up Text Replacement for System Prompt (Recommended)
+
+**Why**: The system prompt is long and you'll use it frequently. Set up a text expansion shortcut.
+
+**Tools** (choose one):
+- **macOS**: TextExpander, aText, or built-in Text Replacement (System Settings → Keyboard → Text Replacements)
+- **Windows**: PhraseExpress, TextExpander, or AutoHotkey
+- **Linux**: AutoKey, Espanso, or TextExpander
+
+**Setup**:
+1. Open your text replacement tool
+2. Create a new snippet/expansion
+3. **Shortcut**: `;orch` or `;system` (or your preference)
+4. **Expansion**: Copy the entire contents of `docs/SYSTEM_PROMPT.md`
+5. **Placeholder**: Replace `[describe bug clearly]` with `{{bug}}` or `%bug%` (if your tool supports placeholders)
+
+**Usage**:
+- Type `;orch` anywhere in Cursor chat
+- It expands to the full system prompt
+- Replace `[describe bug clearly]` with your actual task description
+- Send to Cursor
+
+**Alternative**: If your tool doesn't support placeholders, just use `;orch` and manually replace `[describe bug clearly]` each time.
+
+## 7. Using the System Prompt
+1. Type your shortcut (e.g., `;orch`) or copy from `docs/SYSTEM_PROMPT.md`
 2. Replace `[describe bug clearly]` with your task
 3. Paste into Cursor chat
 4. Approve diagnostic script creation when prompted
 5. If Cursor asks whether to spin up 8–10 Orch sessions (for large refactors), answer yes/no and let it generate the sub-prompts
 
-## 7. Workflow Reminders
+## 8. Workflow Reminders
 - Always execute `pm → sd → test → red → white → purple → blindspot → blue → devops → ethics`
 - Every phase must update the JAUmemory problem entry (status + findings)
 - Diagnostic scripts are mandatory unless explicitly documented as infeasible
 - Remove markdown/non-runtime files from extension distribution; archive unused assets
 - Commit after BLUE approval and reference the JAUmemory ID in the message
 
-## 8. Ask Cursor for Help Automating Setup
+## 9. Ask Cursor for Help Automating Setup
 Sample prompts:
 - “Cursor, read `contextcoding/docs/TOOLING_OVERVIEW.md` and summarize the workflow.”
 - “Cursor, create JAUmemory entries for the problems we find today.”
 - “Cursor, split this refactor across 10 Orch tasks with balanced effort.”
 - “Cursor, check the distribution for stray markdown files and archive them.”
 
-## 9. Optional: Create Additional Workflows
+## 10. Optional: Create Additional Workflows
 If your team needs a custom workflow:
 1. Duplicate `docs/DEFAULT_WORKFLOW_MANIFEST.md`
 2. Modify agent order/responsibilities
 3. Save as `docs/workflows/<name>.md`
 4. Update the system prompt to reference the new workflow
 
-## 10. Verification Checklist
+## 11. Verification Checklist
 - [ ] Cursor installed & authenticated
 - [ ] Context repo cloned
 - [ ] Product repo cloned & lint passes
