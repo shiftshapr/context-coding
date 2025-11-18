@@ -5,7 +5,7 @@ This guide explains all the tools available for AI-assisted coding in this proje
 ## Core Orchestration Tools
 
 ### 1. System Prompt
-**Location**: `SYSTEM_PROMPT.md`
+**Location**: `05_SYSTEM_PROMPT.md`
 
 The system prompt is your primary orchestration command. It:
 - Initializes the full 10-agent collaboration workflow
@@ -14,7 +14,7 @@ The system prompt is your primary orchestration command. It:
 - Requires diagnostic scripts for root cause analysis
 - Can parallelize large tasks across 8-10 Orch sessions
 
-**Usage**: Copy the prompt from `SYSTEM_PROMPT.md`, replace `[describe bug clearly]` with your task, and send it to Cursor.
+**Usage**: Copy the prompt from `05_SYSTEM_PROMPT.md`, replace `[describe bug clearly]` with your task, and send it to Cursor.
 
 **Pro Tip: Text Replacement Shortcut**
 Set up a text expansion tool (TextExpander, aText, AutoKey, etc.) with shortcut `;orch` that expands to the full system prompt. This saves time since you'll use it frequently.
@@ -22,7 +22,7 @@ Set up a text expansion tool (TextExpander, aText, AutoKey, etc.) with shortcut 
 **Setup**:
 1. Install a text replacement tool (macOS: TextExpander/aText, Windows: PhraseExpress/AutoHotkey, Linux: AutoKey/Espanso)
 2. Create snippet with shortcut `;orch` (or your preference)
-3. Copy entire `SYSTEM_PROMPT.md` content as expansion
+3. Copy entire `05_SYSTEM_PROMPT.md` content as expansion
 4. Type `;orch` anywhere → expands to full prompt → replace `[describe bug clearly]` → send
 
 **Key Features**:
@@ -33,9 +33,9 @@ Set up a text expansion tool (TextExpander, aText, AutoKey, etc.) with shortcut 
 
 ### 2. Cursor Rules (`.cursorrules`)
 **Location**: 
-- `CURSORRULES_GENERIC.md` – Universal rules for all projects
-- `CURSORRULES_EXTENSION_EXAMPLE.md` – Extension-specific rules (only if building browser extensions)
-- `CURSORRULES.md` – Index file explaining which to use
+- `07a_CURSORRULES_GENERIC.md` – Universal rules for all projects
+- `07b_CURSORRULES_EXTENSION_EXAMPLE.md` – Extension-specific rules (only if building browser extensions)
+- `06_CURSORRULES.md` – Index file explaining which to use
 
 Red-line policies that are **automatically enforced** by all agents:
 
@@ -45,7 +45,7 @@ Red-line policies that are **automatically enforced** by all agents:
 - ❌ NO duplicate fields with different naming
 - Convert at interface boundaries, delete originals
 
-**Extension Distribution Cleanliness** (Extension projects only - see `CURSORRULES_EXTENSION_EXAMPLE.md`):
+**Extension Distribution Cleanliness** (Extension projects only - see `07b_CURSORRULES_EXTENSION_EXAMPLE.md`):
 - ❌ NO `.md` files in distribution directory
 - ❌ NO TypeScript source files in distribution
 - ❌ NO test files, build scripts, or diagnostic scripts in distribution
@@ -154,7 +154,7 @@ The system has **16 core agents** that cover all essential workflows. Additional
 - `agent_reflection()` - Store agent learnings
 
 ### 5. Default Workflow
-**Location**: `DEFAULT_WORKFLOW_MANIFEST.md`
+**Location**: `08_DEFAULT_WORKFLOW_MANIFEST.md`
 
 **Execution Order**:
 ```
@@ -185,7 +185,7 @@ PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → DEVOP
 **How to Set Up**:
 1. Define workflow in JAUmemory as a memory or collection
 2. Specify agent order and responsibilities
-3. Create workflow manifest document (similar to `DEFAULT_WORKFLOW_MANIFEST.md`)
+3. Create workflow manifest document (similar to `08_DEFAULT_WORKFLOW_MANIFEST.md`)
 4. Reference in system prompt: "Use Custom Workflow X instead of default"
 
 **Example Use Cases**:
@@ -323,7 +323,7 @@ npm run lint  # Run linting
 ### Quick Reference
 
 **For a new bug fix**:
-1. Copy `SYSTEM_PROMPT.md`
+1. Copy `05_SYSTEM_PROMPT.md`
 2. Replace objective with bug description
 3. Send to Cursor
 4. Agents automatically:
@@ -351,9 +351,9 @@ npm run lint  # Run linting
 ## Getting Started Checklist
 
 - [ ] Clone repo and run `npm install`
-- [ ] Review `CURSORRULES.md` for red-line policies
-- [ ] Review `DEFAULT_WORKFLOW_MANIFEST.md` for workflow
-- [ ] Review `JAUMEMORY_CONTEXT_QUICKSTART.md` for memory practices
+- [ ] Review `07a_CURSORRULES_GENERIC.md` for red-line policies
+- [ ] Review `08_DEFAULT_WORKFLOW_MANIFEST.md` for workflow
+- [ ] Review `09_JAUMEMORY_CONTEXT_QUICKSTART.md` for memory practices
 - [ ] Test system prompt with a small task
 - [ ] Verify ESLint is working (`npm run lint`)
 - [ ] Set up JAUmemory access (if needed)
@@ -361,8 +361,8 @@ npm run lint  # Run linting
 
 ## Support
 
-- **Workflow questions**: See `DEFAULT_WORKFLOW_MANIFEST.md`
-- **Policy questions**: See `CURSORRULES_GENERIC.md` (and `CURSORRULES_EXTENSION_EXAMPLE.md` if building extensions)
-- **Memory questions**: See `JAUMEMORY_CONTEXT_QUICKSTART.md`
+- **Workflow questions**: See `08_DEFAULT_WORKFLOW_MANIFEST.md`
+- **Policy questions**: See `07a_CURSORRULES_GENERIC.md` (and `07b_CURSORRULES_EXTENSION_EXAMPLE.md` if building extensions)
+- **Memory questions**: See `09_JAUMEMORY_CONTEXT_QUICKSTART.md`
 - **Agent questions**: Query JAUmemory `list_agents()`
 

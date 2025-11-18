@@ -1,6 +1,6 @@
 # Extension-Specific Cursor Rules Example
 
-**NOTE**: This file contains rules specific to **browser extension development**. Only use these if you're building a Chrome/Firefox/Edge extension. For other project types, use `CURSORRULES_GENERIC.md` instead.
+**NOTE**: This file contains rules specific to **browser extension development**. Only use these if you're building a Chrome/Firefox/Edge extension. For other project types, use `07a_CURSORRULES_GENERIC.md` instead.
 
 ## Extension Distribution Cleanliness (RED-LINE)
 

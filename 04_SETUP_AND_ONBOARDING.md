@@ -14,17 +14,17 @@ Use this playbook to get a new collaborator productive in <30 minutes. Cursor ca
 git clone <this-repo-url> contextcoding
 cd contextcoding
 ```
-> Tip: Ask Cursor, "Clone the contextcoding repo into the workspace and open `TOOLING_OVERVIEW.md`."
+> Tip: Ask Cursor, "Clone the contextcoding repo into the workspace and open `02_TOOLING_OVERVIEW.md`."
 
 ## 3. Review Docs in Order
-1. `TOOLING_OVERVIEW.md` – overview of every tool
-2. `WORKFLOW_GUIDE.md` – **complete step-by-step workflow** (read this before starting!)
-3. `CURSORRULES_GENERIC.md` – generic red-line policies (must-read)
-4. `CURSORRULES_EXTENSION_EXAMPLE.md` – extension-specific rules (only if building browser extensions)
-5. `DEFAULT_WORKFLOW_MANIFEST.md` – workflow & agent order
-6. `SYSTEM_PROMPT.md` – copy/paste for orchestration
-7. `JAUMEMORY_CONTEXT_QUICKSTART.md` – memory lifecycle
-8. `AGENT_DESCRIPTIONS.md` – understand who does what
+1. `02_TOOLING_OVERVIEW.md` – overview of every tool
+2. `03_WORKFLOW_GUIDE.md` – **complete step-by-step workflow** (read this before starting!)
+3. `07a_CURSORRULES_GENERIC.md` – generic red-line policies (must-read)
+4. `07b_CURSORRULES_EXTENSION_EXAMPLE.md` – extension-specific rules (only if building browser extensions)
+5. `08_DEFAULT_WORKFLOW_MANIFEST.md` – workflow & agent order
+6. `05_SYSTEM_PROMPT.md` – copy/paste for orchestration
+7. `09_JAUMEMORY_CONTEXT_QUICKSTART.md` – memory lifecycle
+8. `10_AGENT_DESCRIPTIONS.md` – understand who does what
 
 ## 4. Set Up Your Project Repository
 
@@ -68,10 +68,10 @@ git commit -m "Initial commit"
 **Say to Cursor**:
 ```
 Using the contextcoding directory as reference:
-1. Read CURSORRULES_GENERIC.md and create a .cursorrules file in this project root
-2. If this is a browser extension project, also read CURSORRULES_EXTENSION_EXAMPLE.md and add extension-specific rules
-3. Read DEFAULT_WORKFLOW_MANIFEST.md and store the workflow definition in JAUmemory
-4. Read AGENT_DESCRIPTIONS.md and ensure all agents are available/configured in JAUmemory
+1. Read 07a_CURSORRULES_GENERIC.md and create a .cursorrules file in this project root
+2. If this is a browser extension project, also read 07b_CURSORRULES_EXTENSION_EXAMPLE.md and add extension-specific rules
+3. Read 08_DEFAULT_WORKFLOW_MANIFEST.md and store the workflow definition in JAUmemory
+4. Read 10_AGENT_DESCRIPTIONS.md and ensure all agents are available/configured in JAUmemory
 5. Set up any project-specific guardrails based on the templates
 ```
 
@@ -105,7 +105,7 @@ Test JAUmemory by listing all available agents and creating a test memory for pr
 1. Open your text replacement tool
 2. Create a new snippet/expansion
 3. **Shortcut**: `;orch` or `;system` (or your preference)
-4. **Expansion**: Copy the entire contents of `SYSTEM_PROMPT.md`
+4. **Expansion**: Copy the entire contents of `05_SYSTEM_PROMPT.md`
 5. **Placeholder**: Replace `[describe bug clearly]` with `{{bug}}` or `%bug%` (if your tool supports placeholders)
 
 **Usage**:
@@ -157,7 +157,7 @@ Response: {"error": "Database connection failed"}
 ```
 
 ## 9. Using the System Prompt
-1. Type your shortcut (e.g., `;orch`) or copy from `SYSTEM_PROMPT.md`
+1. Type your shortcut (e.g., `;orch`) or copy from `05_SYSTEM_PROMPT.md`
 2. Replace `[describe bug clearly]` with your task
 3. **Add browser console logs** if the issue involves runtime errors, network failures, or state issues
 4. Replace `Active project = [project-name]` with your actual project name
@@ -167,18 +167,18 @@ Response: {"error": "Database connection failed"}
 
 ## 10. Ask Cursor for Help Automating Setup
 Sample prompts:
-- "Cursor, read `contextcoding/TOOLING_OVERVIEW.md` and summarize the workflow."
+- "Cursor, read `contextcoding/02_TOOLING_OVERVIEW.md` and summarize the workflow."
 - "Cursor, create JAUmemory entries for the problems we find today."
 - "Cursor, split this refactor across 10 Orch tasks with balanced effort."
 - "Cursor, check the distribution for stray markdown files and archive them."
-- "Cursor, set up .cursorrules based on the template in contextcoding/CURSORRULES_GENERIC.md (and CURSORRULES_EXTENSION_EXAMPLE.md if building an extension)"
+- "Cursor, set up .cursorrules based on the template in contextcoding/07a_CURSORRULES_GENERIC.md (and 07b_CURSORRULES_EXTENSION_EXAMPLE.md if building an extension)"
 
 ## 11. Optional: Create Additional Workflows
 If your team needs a custom workflow:
 
 **Say to Cursor**:
 ```
-Create a custom workflow based on DEFAULT_WORKFLOW_MANIFEST.md:
+Create a custom workflow based on 08_DEFAULT_WORKFLOW_MANIFEST.md:
 - Modify agent order to: [your-order]
 - Add/remove agents: [list changes]
 - Save as workflows/[workflow-name].md

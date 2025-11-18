@@ -103,7 +103,7 @@ Still no coding - just planning and scaffolding.
 ### 4a. Load System Prompt
 
 1. Type your shortcut (e.g., `;orch`) - it expands to full system prompt
-2. Or copy from `SYSTEM_PROMPT.md`
+2. Or copy from `05_SYSTEM_PROMPT.md`
 
 ### 4b. Replace Task Description
 
