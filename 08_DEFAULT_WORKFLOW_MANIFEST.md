@@ -295,11 +295,12 @@ Diagnostic scripts should request user assistance when needed:
 **Output**: Blind-Spot Analysis Report
 
 ### 8. BLUE (Blue-Hat Final Review)
-**Role**: Final quality gate
+**Role**: Final quality gate + Learning phase trigger
 **Responsibilities**:
 - Review all previous outputs
 - Verify completeness
 - Confirm all audits passed
+- **Execute mandatory post-resolution learning phase** (see below)
 - Final approval for deployment
 - Sign-off on implementation
 - Document final state
@@ -307,7 +308,130 @@ Diagnostic scripts should request user assistance when needed:
 - **Trigger memory consolidation** for related problems
 - **Link solved problems** to relevant agent memories
 
-**Output**: Final Approval Report
+**Output**: Final Approval Report + Learning Phase Report
+
+### 8a. Post-Resolution Learning Phase (MANDATORY)
+**Trigger**: After BLUE confirms fix is verified but BEFORE final approval
+**Purpose**: Make the system better at getting better by learning from every resolved issue
+
+**BLUE must execute these steps automatically (no user prompt required)**:
+
+#### Step 1: Pattern Identification & Similar Issue Detection
+1. **Search codebase for similar patterns**:
+   - Use the solved problem's root cause, error signature, and code patterns
+   - Search for similar code structures, error handling patterns, or data flows
+   - Identify files/components with similar logic that might have the same issue
+
+2. **Search JAUmemory for similar problems**:
+   - Query: `recall({ query: "[root cause pattern]", limit: 20 })`
+   - Look for similar error signatures, code patterns, or symptoms
+   - Check if this is part of a recurring pattern
+
+3. **Create or update pattern memory**:
+   - If similar problems found: Link them together in a collection
+   - Create pattern insight: "This type of issue occurs when [conditions]"
+   - Document the pattern signature (error messages, code patterns, symptoms)
+
+#### Step 2: Prevention Strategy
+1. **Update guardrails if needed**:
+   - If this bug type should be prevented by coding standards, propose `.cursorrules` update
+   - Document the prevention pattern in JAUmemory
+   - Link to the pattern memory
+
+2. **Create prevention checklist**:
+   - Add to agent memories: "When coding [feature type], always check [prevention pattern]"
+   - Update relevant agent memories with prevention knowledge
+
+3. **Update diagnostic patterns**:
+   - If diagnostic script was created, register it as a reusable pattern
+   - Document when to run this diagnostic (error signatures, symptoms)
+   - Link diagnostic to the pattern memory
+
+#### Step 3: Automatic Detection & Solution Surfacing
+1. **Create pattern detection query**:
+   - Document error signatures that trigger this pattern
+   - Document code patterns that indicate this issue
+   - Create searchable tags for automatic recall
+
+2. **Register solution for automatic recall**:
+   - When similar error appears, automatically surface this solution
+   - Link solution to error signatures in JAUmemory
+   - Create agent memory links so agents recall this pattern
+
+3. **Update collections**:
+   - Add to "Pattern Library" collection (create if doesn't exist)
+   - Add to "Blind-Spot Patterns" collection if it's a blind-spot issue
+   - Add to "Diagnostic Patterns" collection if diagnostic was created
+
+#### Step 4: Knowledge Consolidation
+1. **Consolidate related memories**:
+   - If 2+ similar problems exist, use `consolidate_collection()` to create insight
+   - Archive original memories if consolidated
+   - Create summary: "Pattern: [name] - occurs when [conditions], fixed by [solution]"
+
+2. **Update agent learning**:
+   - Link pattern to relevant agents (SD, TEST, BLINDSPOT, etc.)
+   - Create agent reflection: "We learned to [prevention action] when [conditions]"
+   - Update agent memories with pattern recognition
+
+**Required JAUmemory Actions**:
+```javascript
+// 1. Create/update pattern collection
+create_collection({ 
+  name: "Pattern Library",
+  description: "Reusable patterns for automatic issue detection and prevention"
+})
+
+// 2. Create pattern memory
+remember({
+  content: "Pattern: [pattern name] - [description]",
+  tags: ["pattern", "prevention", "diagnostic", "auto-detect"],
+  metadata: {
+    errorSignature: "[error message pattern]",
+    codePattern: "[code structure that causes issue]",
+    solution: "[how to fix]",
+    prevention: "[how to prevent]",
+    diagnosticScript: "[diagnostic ID if applicable]",
+    similarIssues: ["memory-id-1", "memory-id-2"]
+  }
+})
+
+// 3. Link to collection
+add_to_collection({
+  collection_id: "pattern-library-id",
+  memory_id: "pattern-memory-id"
+})
+
+// 4. Update agent memories
+agent_memory({
+  action: "link",
+  agentId: "sd",
+  memoryId: "pattern-memory-id",
+  category: "learning",
+  projectContext: "[project-name]"
+})
+
+// 5. Create agent reflection
+agent_reflection({
+  action: "create",
+  agentId: "sd",
+  reflectionType: "learning",
+  content: "Learned pattern: [pattern name]. When [conditions], we should [prevention action]",
+  lessonsLearned: [
+    "[prevention lesson 1]",
+    "[prevention lesson 2]"
+  ]
+})
+```
+
+**Output**: Learning Phase Report including:
+- Similar issues found (in codebase and JAUmemory)
+- Pattern created/updated
+- Prevention strategies documented
+- Diagnostic patterns registered
+- Guardrail updates proposed (if any)
+- Collections updated
+- Agent memories updated
 
 ### 9. DEVOPS (DevOps Engineer)
 **Role**: Deployment and operations
@@ -336,8 +460,10 @@ Diagnostic scripts should request user assistance when needed:
 ## Workflow Execution Order
 
 ```
-PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → DEVOPS → ETHICS
+PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → [LEARN] → DEVOPS → ETHICS
 ```
+
+**Note**: The `[LEARN]` phase is automatically executed by BLUE as part of the final review process. It is not a separate agent but a mandatory learning phase that BLUE must complete before final approval.
 
 ## Blind-Spot Audit Checklist
 - [ ] Are all edge cases covered?
@@ -378,4 +504,9 @@ Each agent must produce:
 
 ## Final Approval
 All agents must PASS before BLUE can approve. Any FAILED agent requires fixes and re-audit.
+
+**BLUE must complete the Post-Resolution Learning Phase before final approval**. The learning phase is mandatory and automatic - no user prompt required. BLUE must:
+1. Execute all 4 learning steps (Pattern Identification, Prevention Strategy, Automatic Detection, Knowledge Consolidation)
+2. Document findings in Learning Phase Report
+3. Only then provide final approval
 

@@ -34,4 +34,5 @@ Report results including:
 - Status per agent (PASSED/FAILED/WARNINGS) with findings/recommendations/risks
 - Diagnostic results and blind-spot patterns (link to collections)
 - Red-line warnings or escalations
+- **Learning Phase Report** (automatic post-resolution learning: pattern identification, prevention strategies, automatic detection setup, knowledge consolidation)
 - Final BLUE confirmation, commit reference, and JAUmemory status updates

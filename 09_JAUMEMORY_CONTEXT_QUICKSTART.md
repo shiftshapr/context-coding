@@ -332,9 +332,51 @@ get_collection({ collection_id: "coll-theme-789" })
 
 ---
 
-## 10. Consolidate Similar Memories (Monthly)
+## 10. Automatic Learning Phase (Built into Workflow)
 
-**When**: You have 5+ related memories in a collection.
+**When**: Automatically happens after every bug fix (BLUE agent executes this)
+
+**What happens automatically** (you don't need to do anything):
+1. **Pattern Identification**: System searches for similar issues in codebase and JAUmemory
+2. **Prevention Strategy**: Creates prevention patterns and updates agent memories
+3. **Automatic Detection**: Registers error signatures and code patterns for future auto-detection
+4. **Knowledge Consolidation**: Consolidates related memories into pattern insights
+
+**Collections created automatically**:
+- **"Pattern Library"** - Reusable patterns for automatic issue detection
+- **"Blind-Spot Patterns"** - Patterns that were blind spots
+- **"Diagnostic Patterns"** - Reusable diagnostic scripts
+
+**How it works**:
+- After BLUE confirms a fix, the learning phase automatically:
+  - Searches for similar code patterns in your codebase
+  - Searches JAUmemory for similar problems
+  - Creates pattern memories with error signatures and solutions
+  - Updates agent memories so they recognize patterns
+  - Registers diagnostic scripts as reusable patterns
+  - Proposes guardrail updates if needed
+
+**You'll see**: A "Learning Phase Report" in the final output showing:
+- Similar issues found
+- Pattern created/updated
+- Prevention strategies documented
+- Diagnostic patterns registered
+
+**To view patterns later**:
+```
+// List all collections
+list_collections()
+
+// Get Pattern Library
+get_collection({ collection_id: "pattern-library-id" })
+
+// Search for patterns
+recall({ query: "pattern", tags: ["pattern", "prevention"] })
+```
+
+## 11. Consolidate Similar Memories (Monthly)
+
+**When**: You have 5+ related memories in a collection (or the learning phase identifies them).
 
 **Command**:
 ```
@@ -346,6 +388,8 @@ consolidate_collection({
 ```
 
 **Result**: Creates a summary memory with insights, patterns, and lessons learned.
+
+**Note**: The automatic learning phase may consolidate memories automatically if it finds 2+ similar problems.
 
 ---
 
