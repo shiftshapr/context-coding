@@ -32,7 +32,10 @@ Set up a text expansion tool (TextExpander, aText, AutoKey, etc.) with shortcut 
 - Full agent audit chain (pm → sd → test → red → white → purple → blindspot → blue → devops → ethics)
 
 ### 2. Cursor Rules (`.cursorrules`)
-**Location**: `CURSORRULES.md` (also in repo root as `.cursorrules`)
+**Location**: 
+- `CURSORRULES_GENERIC.md` – Universal rules for all projects
+- `CURSORRULES_EXTENSION_EXAMPLE.md` – Extension-specific rules (only if building browser extensions)
+- `CURSORRULES.md` – Index file explaining which to use
 
 Red-line policies that are **automatically enforced** by all agents:
 
@@ -42,8 +45,8 @@ Red-line policies that are **automatically enforced** by all agents:
 - ❌ NO duplicate fields with different naming
 - Convert at interface boundaries, delete originals
 
-**Extension Distribution Cleanliness**:
-- ❌ NO `.md` files in `presence/` (distribution directory)
+**Extension Distribution Cleanliness** (Extension projects only - see `CURSORRULES_EXTENSION_EXAMPLE.md`):
+- ❌ NO `.md` files in distribution directory
 - ❌ NO TypeScript source files in distribution
 - ❌ NO test files, build scripts, or diagnostic scripts in distribution
 - ✅ All documentation goes in `docs/` or parent directory
@@ -362,7 +365,7 @@ npm run lint  # Run linting
 ## Support
 
 - **Workflow questions**: See `DEFAULT_WORKFLOW_MANIFEST.md`
-- **Policy questions**: See `CURSORRULES.md`
+- **Policy questions**: See `CURSORRULES_GENERIC.md` (and `CURSORRULES_EXTENSION_EXAMPLE.md` if building extensions)
 - **Memory questions**: See `JAUMEMORY_CONTEXT_QUICKSTART.md`
 - **Agent questions**: Query JAUmemory `list_agents()`
 

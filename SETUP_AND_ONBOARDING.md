@@ -18,11 +18,12 @@ cd contextcoding
 
 ## 3. Review Docs in Order
 1. `TOOLING_OVERVIEW.md` – overview of every tool
-2. `CURSORRULES.md` – red-line policies (must-read)
-3. `DEFAULT_WORKFLOW_MANIFEST.md` – workflow & agent order
-4. `SYSTEM_PROMPT.md` – copy/paste for orchestration
-5. `JAUMEMORY_CONTEXT_QUICKSTART.md` – memory lifecycle
-6. `AGENT_DESCRIPTIONS.md` – understand who does what
+2. `CURSORRULES_GENERIC.md` – generic red-line policies (must-read)
+3. `CURSORRULES_EXTENSION_EXAMPLE.md` – extension-specific rules (only if building browser extensions)
+4. `DEFAULT_WORKFLOW_MANIFEST.md` – workflow & agent order
+5. `SYSTEM_PROMPT.md` – copy/paste for orchestration
+6. `JAUMEMORY_CONTEXT_QUICKSTART.md` – memory lifecycle
+7. `AGENT_DESCRIPTIONS.md` – understand who does what
 
 ## 4. Set Up Your Project Repository
 
@@ -66,10 +67,11 @@ git commit -m "Initial commit"
 **Say to Cursor**:
 ```
 Using the contextcoding directory as reference:
-1. Read CURSORRULES.md and create a .cursorrules file in this project root
-2. Read DEFAULT_WORKFLOW_MANIFEST.md and store the workflow definition in JAUmemory
-3. Read AGENT_DESCRIPTIONS.md and ensure all agents are available/configured in JAUmemory
-4. Set up any project-specific guardrails based on the templates
+1. Read CURSORRULES_GENERIC.md and create a .cursorrules file in this project root
+2. If this is a browser extension project, also read CURSORRULES_EXTENSION_EXAMPLE.md and add extension-specific rules
+3. Read DEFAULT_WORKFLOW_MANIFEST.md and store the workflow definition in JAUmemory
+4. Read AGENT_DESCRIPTIONS.md and ensure all agents are available/configured in JAUmemory
+5. Set up any project-specific guardrails based on the templates
 ```
 
 **Cursor will**:
@@ -168,7 +170,7 @@ Sample prompts:
 - "Cursor, create JAUmemory entries for the problems we find today."
 - "Cursor, split this refactor across 10 Orch tasks with balanced effort."
 - "Cursor, check the distribution for stray markdown files and archive them."
-- "Cursor, set up .cursorrules based on the template in contextcoding/CURSORRULES.md"
+- "Cursor, set up .cursorrules based on the template in contextcoding/CURSORRULES_GENERIC.md (and CURSORRULES_EXTENSION_EXAMPLE.md if building an extension)"
 
 ## 11. Optional: Create Additional Workflows
 If your team needs a custom workflow:
@@ -186,7 +188,7 @@ Create a custom workflow based on DEFAULT_WORKFLOW_MANIFEST.md:
 - [ ] Cursor installed & authenticated
 - [ ] Context repo cloned
 - [ ] Project repo set up (existing or new)
-- [ ] `.cursorrules` created in project root
+- [ ] `.cursorrules` created in project root (generic + extension-specific if applicable)
 - [ ] Workflow stored in JAUmemory
 - [ ] Agents verified in JAUmemory
 - [ ] JAUmemory access verified

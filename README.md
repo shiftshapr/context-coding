@@ -5,7 +5,9 @@
 Contents of this directory:
 - `TOOLING_OVERVIEW.md` – **Complete guide to all AI coding tools** (system prompt, Cursor rules, agents, JAUmemory, workflows, Git, ESLint)
 - `SYSTEM_PROMPT.md` – the orchestration system prompt you currently send.
-- `CURSORRULES.md` – project red-line policies from `.cursorrules`.
+- `CURSORRULES_GENERIC.md` – universal red-line policies for all projects
+- `CURSORRULES_EXTENSION_EXAMPLE.md` – extension-specific rules (browser extensions only)
+- `CURSORRULES.md` – index explaining which rules to use
 - `AGENT_DESCRIPTIONS.md` – agent roles/responsibilities reference.
 - `DEFAULT_WORKFLOW_MANIFEST.md` – Default Collaboration Workflow Manifest (execution order + reporting requirements).
 - `JAUMEMORY_CONTEXT_QUICKSTART.md` – practical guide for problem cataloging, diagnostics, blind-spot tracking, and memory consolidation.
