@@ -1,8 +1,18 @@
 # Agent Directory
 
-This is the canonical list of agents currently available in JAUmemory-based orchestration. Use it to select the right specialist when customizing workflows.
+This directory focuses on the **16 core agents** that cover all essential workflows. Additional specialized agents exist in JAUmemory but these are the primary ones you'll use.
 
-## Core Workflow Agents (Default Order)
+## 16 Core Agents Overview
+
+**Default Workflow Agents** (10 - executed in order):
+These agents run automatically in the default workflow: PM → SD → TEST → RED → WHITE → PURPLE → BLINDSPOT → BLUE → DEVOPS → ETHICS
+
+**Specialized Agents** (6 - invoked as needed):
+These agents are called when specific expertise is required: ORCH, CR, REFACTOR, DOC, EXP, TS
+
+---
+
+## Core Workflow Agents (Default Order - 10 Agents)
 | Agent ID | Role | Responsibilities |
 | --- | --- | --- |
 | `pm` | Project Manager | Problem analysis, requirements validation, create/maintain JAUmemory problem entry, plan diagnostics |
@@ -16,43 +26,27 @@ This is the canonical list of agents currently available in JAUmemory-based orch
 | `devops` | DevOps Engineer | Deployment planning, CI/CD, monitoring, rollback procedures |
 | `ethics` | Ethics & Compliance | Privacy, fairness, governance, accessibility checks |
 
-## Orchestration & Strategy
+## Specialized Agents (6 Core - Invoked as Needed)
 | Agent ID | Role | Responsibilities |
 | --- | --- | --- |
 | `orch` | Conductor (Orchestrator) | Initializes workflows, balances workloads, handles 8–10 parallel Orch sessions when tasks can be split |
-| `prod` | Product Strategist | Aligns work with user outcomes, metrics, and roadmap |
+| `cr` | Code Researcher | Deep debugging, static analysis, runtime tracing |
+| `refactor` | Refactor Engineer | Debt reduction, performance optimization, modularization |
 | `doc` | Documentation Engineer | Writes/updates docs, tutorials, release notes, JAUmemory summaries |
 | `exp` | UX/UI Architect | Interaction design, accessibility, UX guardrails, visual consistency |
-| `refactor` | Refactor Engineer | Debt reduction, performance optimization, modularization |
-| `int` | Integration Engineer | API schemas, data pipelines, cross-service glue |
-| `blindspot` | Blind-Spot Analyst | Already listed above; double-emphasized due to importance |
+| `ts` | TypeScript Specialist | Type safety, migration, type system optimization |
 
-## Security Suite
-| Agent ID | Role | Notes |
-| --- | --- | --- |
-| `red` | Critical constraint auditor | Stops work on policy breaches |
-| `white` | Security integrity | Threat modeling, auth flows |
-| `purple` | Adversarial tester | Attack simulations, fuzzing |
-| `blue` | Final QA/security gate | Signs off only when all others pass |
+**Note**: These 6 specialized agents are part of the 16 core agents. Use them when you need specific expertise beyond the default workflow.
 
-## Diagnostics & Research
-| Agent ID | Role | Responsibilities |
-| --- | --- | --- |
-| `cr` | Code Researcher | Deep debugging, static analysis, runtime tracing |
-| `sd1`/`sd2`/`sd3`/`sd4` | System Debugger variants | Focus areas: architecture-first, cleanup, COMP compliance, frontend debugging |
-| `ta1`, `te1`, `te2`, `qa1` | Test/QA variants | Automation, chrome extensions, diagnostics, manual QA |
-| `blindspot` | Already above | – |
+## Additional Agents Available in JAUmemory
 
-## Additional Specialized Agents
-| Agent ID | Role | Responsibilities |
-| --- | --- | --- |
-| `devops` (legacy `de1`) | Ops engineer | Infrastructure, monitoring, security hardening |
-| `pm1` | Legacy PM | Older workflows; kept for compatibility |
-| `doc` | Documentation | Tutorials, knowledge transfer |
-| `code-reviewer` | Reviewer | Detailed code review focus |
-| `syntax fixer (sxf1)` | Syntax Fixer | Fast syntax cleanup |
-| `senior frontend developer` | Frontend specialist | CSS/UX enhancements |
-| `cross-profile sync specialist (cp1)` | Realtime sync | Multi-profile broadcast issues |
+Beyond the 16 core agents, JAUmemory contains additional specialized agents for specific domains:
+- System Debugger variants (`sd1`, `sd2`, `sd3`, `sd4`)
+- Test/QA variants (`ta1`, `te1`, `te2`, `qa1`)
+- Legacy agents (`pm1`, `de1`, etc.)
+- Domain-specific specialists (frontend, backend, integration, etc.)
+
+**To see all available agents**: Query JAUmemory with `list_agents()` to get the complete, real-time roster including UUIDs and personality traits.
 
 ## Using Agents Effectively
 - **Default workflow** already covers PM→ETHICS; invoke supplemental agents when domain needs extra depth (e.g., `refactor` for performance, `exp` for UX).

@@ -67,6 +67,13 @@ Search JAUmemory for any memories tagged with "test"
 
 **Action**: Always search JAUmemory first to avoid duplicate work.
 
+**Check Collections First**:
+- Look for a **"Bike Rack"** collection - this contains tasks/issues you want to tackle
+- Query: `list_collections()` to see all collections
+- Or: `get_collection({ collection_id: "bike-rack-id" })` if you know the ID
+
+**Search for Existing Problems**:
+
 **Say to Cursor**:
 ```
 Search JAUmemory for any existing problems about "theme saving" in the [project-name] project
@@ -81,6 +88,7 @@ Recall memories about theme persistence bugs, limit to 10 results
 - Similar problems already solved
 - Related diagnostics that exist
 - Known blind spots in this area
+- Tasks in the Bike Rack collection
 
 **If found**: Say to Cursor:
 ```

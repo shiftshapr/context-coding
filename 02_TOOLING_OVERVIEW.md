@@ -17,10 +17,10 @@ The system prompt is your primary orchestration command. It:
 **Usage**: Copy the prompt from `05_SYSTEM_PROMPT.md`, replace `[describe bug clearly]` with your task, and send it to Cursor.
 
 **Pro Tip: Text Replacement Shortcut**
-Set up a text expansion tool (TextExpander, aText, AutoKey, etc.) with shortcut `;orch` that expands to the full system prompt. This saves time since you'll use it frequently.
+Set up a text expansion tool (Text Replacements on Mac, aText, AutoKey, etc.) with shortcut `;orch` that expands to the full system prompt. This saves time since you'll use it frequently.
 
 **Setup**:
-1. Install a text replacement tool (macOS: TextExpander/aText, Windows: PhraseExpress/AutoHotkey, Linux: AutoKey/Espanso)
+1. Install a text replacement tool (macOS: Text Replacements, Windows: PhraseExpress/AutoHotkey, Linux: AutoKey/Espanso)
 2. Create snippet with shortcut `;orch` (or your preference)
 3. Copy entire `05_SYSTEM_PROMPT.md` content as expansion
 4. Type `;orch` anywhere → expands to full prompt → replace `[describe bug clearly]` → send
