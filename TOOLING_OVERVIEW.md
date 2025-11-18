@@ -70,10 +70,10 @@ Red-line policies that are **automatically enforced** by all agents:
 - Window global null checks
 - Type guards instead of `any`
 
-### 3. Agents (15 Core Agents)
+### 3. Agents (16 Core Agents)
 **Location**: JAUmemory (query with `list_agents`)
 
-The system has **15 core agents** that cover all essential workflows. Additional specialized agents are available but these are the primary ones:
+The system has **16 core agents** that cover all essential workflows. Additional specialized agents are available but these are the primary ones:
 
 **Default Workflow Agents** (10 - executed in order):
 - `pm` (Project Manager) - Problem analysis, JAUmemory tracking, diagnostic planning
@@ -87,12 +87,13 @@ The system has **15 core agents** that cover all essential workflows. Additional
 - `devops` (DevOps Engineer) - Deployment, CI/CD, monitoring
 - `ethics` (Ethics & Compliance) - Privacy, fairness, governance
 
-**Specialized Agents** (5 - invoked as needed):
+**Specialized Agents** (6 - invoked as needed):
 - `orch` (Conductor) - Orchestrates workflows, handles parallelization (8-10 Orch sessions)
 - `cr` (Code Researcher) - Deep debugging, static analysis, runtime tracing
 - `refactor` (Refactor Engineer) - Code optimization, debt reduction, performance
 - `doc` (Documentation Engineer) - Technical writing, tutorials, knowledge transfer
 - `exp` (UX/UI Architect) - User experience, accessibility, interaction design
+- `ts` (TypeScript Specialist) - Type safety, migration, type system optimization
 
 **Note**: Additional specialized agents exist in JAUmemory for specific domains. Query `list_agents()` to see all available agents.
 
