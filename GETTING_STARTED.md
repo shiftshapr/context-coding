@@ -6,7 +6,18 @@ This guide helps you get the contextcoding repository and set up your environmen
 
 ## For Beginners (New to GitHub)
 
-### Step 1: Install Git (If You Don't Have It)
+### Step 1: Review Files on GitHub First
+
+**Before downloading anything**, you can read all the files directly on GitHub:
+
+1. Go to: https://github.com/shiftshapr/context-coding
+2. Click on any `.md` file to read it
+3. Start with `README.md` or `TOOLING_OVERVIEW.md`
+4. This helps you understand what you're getting
+
+**Why clone?** You need to clone (not just download) so that Cursor IDE can access these files to set up your AI coding system. Cursor needs the files on your local machine to reference them.
+
+### Step 2: Install Git (Required for Cloning)
 
 **On Mac**:
 1. Open Terminal (search "Terminal" in Spotlight)
@@ -29,45 +40,58 @@ sudo apt-get install git
 sudo dnf install git
 ```
 
-### Step 2: Get the Repository
+### Step 3: Clone the Repository (Required for Cursor)
 
-**Option A: Download as ZIP (Easiest)**
+**You must clone (not just download)** so Cursor can access the files.
 
-1. Go to: https://github.com/shiftshapr/context-coding
-2. Click the green **"Code"** button
-3. Click **"Download ZIP"**
-4. Extract the ZIP file to a folder (e.g., `Documents/contextcoding`)
-5. Open that folder
-
-**Option B: Use GitHub Desktop (Recommended for Beginners)**
+**Option A: Use GitHub Desktop (Easiest for Beginners)**
 
 1. Download GitHub Desktop: https://desktop.github.com/
-2. Install and sign in with your GitHub account
+2. Install and sign in with your GitHub account (or create one)
 3. Click **"File" → "Clone Repository"**
 4. Go to the **"URL"** tab
 5. Paste: `https://github.com/shiftshapr/context-coding.git`
-6. Choose where to save it (e.g., `Documents/contextcoding`)
+6. **Choose your coding/projects folder** (e.g., `Documents/Projects` or `~/code`)
 7. Click **"Clone"**
+8. The folder will be saved as `context-coding` in the location you chose
 
-### Step 3: Open the Files
+**Option B: Use Terminal/Command Line**
 
-**Using a Text Editor**:
-- Open the folder you downloaded/cloned
-- Double-click any `.md` file to read it
-- Start with `README.md` or `TOOLING_OVERVIEW.md`
+1. Open Terminal (Mac/Linux) or Git Bash (Windows)
+2. Navigate to where you keep your coding projects:
+   ```bash
+   cd ~/Documents/Projects
+   # or wherever you keep your code
+   ```
+3. Clone the repository:
+   ```bash
+   git clone https://github.com/shiftshapr/context-coding.git
+   ```
+4. Navigate into it:
+   ```bash
+   cd context-coding
+   ```
 
-**Using Cursor IDE** (Recommended):
+### Step 4: Open in Cursor IDE
+
+**This is why you cloned it** - so Cursor can use these files:
+
 1. Open Cursor IDE
 2. Click **"File" → "Open Folder"**
-3. Select the `contextcoding` folder you downloaded/cloned
-4. You can now read and edit files in Cursor
+3. Navigate to and select the `context-coding` folder you just cloned
+4. Cursor can now:
+   - Read the files to set up your AI coding system
+   - Reference `.cursorrules` templates
+   - Use the system prompt templates
+   - Access workflow definitions
 
-### Step 4: Next Steps
+### Step 5: Next Steps
 
-Once you have the files:
+Once you've cloned and opened in Cursor:
 1. Read `TOOLING_OVERVIEW.md` to understand the tools
 2. Read `WORKFLOW_GUIDE.md` to learn the workflow
 3. Follow `SETUP_AND_ONBOARDING.md` for detailed setup
+4. Cursor will use these files to configure your AI coding system
 
 ---
 
@@ -75,7 +99,12 @@ Once you have the files:
 
 ### Quick Clone
 
+**Clone to your coding/projects directory** so Cursor can access it:
+
 ```bash
+# Navigate to your projects directory
+cd ~/code  # or wherever you keep projects
+
 # Clone the repository
 git clone https://github.com/shiftshapr/context-coding.git
 
@@ -85,6 +114,10 @@ cd context-coding
 # View available files
 ls -la
 ```
+
+**Then open in Cursor**:
+- `File → Open Folder` → select `context-coding`
+- Cursor will use these files to set up your AI coding system
 
 ### Recommended Reading Order
 
@@ -140,8 +173,10 @@ cd context-coding
 
 ## Quick Start Checklist
 
-- [ ] Repository downloaded/cloned
-- [ ] Files accessible (can open and read `.md` files)
+- [ ] Reviewed files on GitHub (optional, but helpful)
+- [ ] Git installed
+- [ ] Repository cloned to your coding/projects directory
+- [ ] Opened `context-coding` folder in Cursor IDE
 - [ ] Read `TOOLING_OVERVIEW.md`
 - [ ] Read `WORKFLOW_GUIDE.md`
 - [ ] Ready to follow `SETUP_AND_ONBOARDING.md` for full setup
@@ -161,8 +196,9 @@ cd context-coding
 - Install Git (see Step 1 for beginners)
 
 **"Can't open .md files"**
-- Use a text editor (VS Code, Cursor, Notepad++, etc.)
+- Open the folder in Cursor IDE (File → Open Folder)
 - Or use GitHub's web interface to read files
+- Cursor needs the files cloned locally to use them for AI coding setup
 
 **"Don't know where to start"**
 - Start with `TOOLING_OVERVIEW.md`
