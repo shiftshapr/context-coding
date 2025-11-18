@@ -18,12 +18,13 @@ cd contextcoding
 
 ## 3. Review Docs in Order
 1. `TOOLING_OVERVIEW.md` – overview of every tool
-2. `CURSORRULES_GENERIC.md` – generic red-line policies (must-read)
-3. `CURSORRULES_EXTENSION_EXAMPLE.md` – extension-specific rules (only if building browser extensions)
-4. `DEFAULT_WORKFLOW_MANIFEST.md` – workflow & agent order
-5. `SYSTEM_PROMPT.md` – copy/paste for orchestration
-6. `JAUMEMORY_CONTEXT_QUICKSTART.md` – memory lifecycle
-7. `AGENT_DESCRIPTIONS.md` – understand who does what
+2. `WORKFLOW_GUIDE.md` – **complete step-by-step workflow** (read this before starting!)
+3. `CURSORRULES_GENERIC.md` – generic red-line policies (must-read)
+4. `CURSORRULES_EXTENSION_EXAMPLE.md` – extension-specific rules (only if building browser extensions)
+5. `DEFAULT_WORKFLOW_MANIFEST.md` – workflow & agent order
+6. `SYSTEM_PROMPT.md` – copy/paste for orchestration
+7. `JAUMEMORY_CONTEXT_QUICKSTART.md` – memory lifecycle
+8. `AGENT_DESCRIPTIONS.md` – understand who does what
 
 ## 4. Set Up Your Project Repository
 
