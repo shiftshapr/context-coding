@@ -70,35 +70,31 @@ Red-line policies that are **automatically enforced** by all agents:
 - Window global null checks
 - Type guards instead of `any`
 
-### 3. Agents (47 Available)
+### 3. Agents (15 Core Agents)
 **Location**: JAUmemory (query with `list_agents`)
 
-The system has **47 active agents** organized by specialization:
+The system has **15 core agents** that cover all essential workflows. Additional specialized agents are available but these are the primary ones:
 
-**Core Development**:
-- `sd` (Senior Developer) - Implementation
-- `cr` (Code Researcher) - Diagnostics and debugging
-- `pm` (Project Manager) - Architecture and planning
-- `test` (Test Engineer) - Validation and testing
+**Default Workflow Agents** (10 - executed in order):
+- `pm` (Project Manager) - Problem analysis, JAUmemory tracking, diagnostic planning
+- `sd` (Senior Developer) - Solution design, implementation, diagnostic scripts
+- `test` (Test Engineer) - Test strategy, verification, diagnostic execution
+- `red` (Red-Line Auditor) - Policy enforcement, blocks violations
+- `white` (White-Hat Security) - Security review, authentication, privacy
+- `purple` (Purple-Team Testing) - Adversarial testing, attack simulation
+- `blindspot` (Blind-Spot Identifier) - Edge cases, race conditions, hidden assumptions
+- `blue` (Blue-Hat Final Review) - Final approval, JAUmemory status updates
+- `devops` (DevOps Engineer) - Deployment, CI/CD, monitoring
+- `ethics` (Ethics & Compliance) - Privacy, fairness, governance
 
-**Security**:
-- `red` (Red Hat) - Penetration testing
-- `white` (White Hat) - Security integrity
-- `purple` (Purple Hat) - Adversarial defense
-- `blue` (Blue Hat) - Final quality gate
+**Specialized Agents** (5 - invoked as needed):
+- `orch` (Conductor) - Orchestrates workflows, handles parallelization (8-10 Orch sessions)
+- `cr` (Code Researcher) - Deep debugging, static analysis, runtime tracing
+- `refactor` (Refactor Engineer) - Code optimization, debt reduction, performance
+- `doc` (Documentation Engineer) - Technical writing, tutorials, knowledge transfer
+- `exp` (UX/UI Architect) - User experience, accessibility, interaction design
 
-**Specialized**:
-- `orch` (Conductor) - Workflow orchestration
-- `ethics` (Ethics & Compliance) - AI governance
-- `devops` (DevOps Engineer) - CI/CD and deployment
-- `refactor` (Refactor Engineer) - Optimization
-- `exp` (UX/UI Architect) - Experience design
-- `doc` (Documentation Engineer) - Technical writing
-- `int` (Integration Engineer) - API integration
-- `prod` (Product Strategist) - Vision alignment
-- `blindspot` (Blind-Spot Identifier) - Edge cases and race conditions
-
-**Plus 30+ specialized variants** for specific domains (frontend, backend, testing, architecture, etc.)
+**Note**: Additional specialized agents exist in JAUmemory for specific domains. Query `list_agents()` to see all available agents.
 
 **Usage**: Agents are automatically invoked in the workflow. You can also:
 - Query agent memories: `agent_memory({ action: "recall", agentId: "sd" })`
