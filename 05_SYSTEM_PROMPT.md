@@ -23,7 +23,19 @@ Diagnostic mandate:
 - If diagnostic not feasible, document exception and reasoning.
 
 Workflow execution (strict order):
-pm → sd → test → red → white → purple → blindspot → blue → learn → meta → devops → ethics
+pm → sd → test → red → white → purple → blindspot → blue → [learn] → [meta] → devops → ethics
+
+Learning phase (mandatory, executed by BLUE after verification):
+- Pattern identification: Search codebase and JAUmemory for similar issues/patterns
+- Prevention strategy: Document how to prevent recurrence
+- Automatic detection: Register diagnostic patterns for future detection
+- Knowledge consolidation: Update collections, link memories, update agent memories
+
+META phase (mandatory, executed by META after learning):
+- Evaluate learning phase effectiveness
+- Identify learning gaps
+- Propose learning system improvements
+- Intervene if learning was ineffective
 
 Throughout:
 - Update JAUmemory problem entry at each phase (proposed, implemented, solved/failed) with code paths, files, test evidence, agents involved.
