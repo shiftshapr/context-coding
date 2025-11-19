@@ -1,39 +1,45 @@
-Orch, initialize orchestration using the Task Invocation Template.
+Orch, initialize orchestration.
 
-Objective:
-Fix [describe bug clearly].
+Objective: Fix [describe bug clearly].
 
-[If applicable, include browser console logs, errors, network failures, or diagnostic output here]
+[Include browser console logs, errors, network failures, diagnostic output if applicable]
 
-Apply `.cursorrules` guardrails at every step:
-- TypeScript + ES6 modules only, modularized changes
-- No pre-launch backward-compat paths or fallbacks; remove duplicates instead
-- Always look for repeated logic and extract unified helpers/modules, noting decisions in JAUmemory
-- Plan → Scaffold → Build, documenting each phase in JAUmemory
-- Keep extension distribution free of markdown/non-runtime files; archive or delete stale diagnostics/tests
-- Always capture problem/diagnostic/solution/verification details in JAUmemory and commit on resolution
+Enforce .cursorrules guardrails:
+- CRITICAL: Never edit extension/, dist/, build/. Edit src/ only. Changes go through build process.
+- TypeScript ES6 modules only. Modular changes. No pre-launch backward-compat. Remove duplicates. Extract unified helpers for repeated logic. Plan → Scaffold → Build. Document phases in JAUmemory. Keep distribution free of markdown/non-runtime files. Archive/delete stale diagnostics/tests. Capture problem/diagnostic/solution/verification in JAUmemory. Commit on resolution.
 
-Use the Default Collaboration Workflow Manifest and enforce all blind-spot and red-line audits.
+Use Default Collaboration Workflow Manifest. Enforce blind-spot and red-line audits.
 
-Parallelization policy:
-If this task is time-consuming but sliceable (e.g., medium refactor/cleanup), ask the user whether to spin up 8–10 parallel Orch sessions and, if approved, provide balanced sub-prompts with clear ownership.
+Parallelization: If time-consuming and sliceable, ask user to spin up 8-10 parallel Orch sessions. If approved, provide balanced sub-prompts with clear ownership.
 
-Before SD begins, PM must search JAUmemory for existing problem memories, create/update one if missing (status = identified), and note diagnostic requirements.
+Before SD begins, PM must:
+- Search JAUmemory for existing problem memories. Create/update if missing (status = identified).
+- Record context, impact, tags, links.
 
 Diagnostic mandate:
-- SD creates or references a diagnostic script targeting the root cause before coding
-- TEST runs diagnostics before and after implementation
-- Attach script IDs/results + verification output to the problem memory; document any exception
+- SD creates or references diagnostic script targeting root cause before coding.
+- TEST runs diagnostics before/after implementation.
+- Attach script IDs/results to problem memory.
+- If diagnostic not feasible, document exception and reasoning.
 
-Active project = [your-project-name]. Recall all relevant preferences, policies, and agents from JAUmemory.
+Workflow execution (strict order):
+pm → sd → test → red → white → purple → blindspot → blue → learn → meta → devops → ethics
 
-Execute the task end-to-end with full agent collaboration:
-pm → sd → test → red → white → purple → blindspot → blue → [learn] → [meta] → devops → ethics.
+Throughout:
+- Update JAUmemory problem entry at each phase (proposed, implemented, solved/failed) with code paths, files, test evidence, agents involved.
+- Link related memories and agent reflections when relevant.
+- Document blind-spot triggers/patterns. Add to appropriate collection.
+- Escalate to PM immediately if red-line constraints, security violations, or scope changes appear.
 
-Report results including:
-- Status per agent (PASSED/FAILED/WARNINGS) with findings/recommendations/risks
-- Diagnostic results and blind-spot patterns (link to collections)
-- Red-line warnings or escalations
-- **Learning Phase Report** (automatic post-resolution learning: pattern identification, prevention strategies, automatic detection setup, knowledge consolidation)
-- **Meta-Learning Report** (automatic evaluation of learning effectiveness, learning gaps identified, improvements proposed)
-- Final BLUE confirmation, commit reference, and JAUmemory status updates
+Report requirements:
+- Status per agent (PASSED/FAILED/WARNINGS).
+- Findings, recommendations, diagnostic results, risk assessment.
+- Blind-spot summary and recurring patterns spotted.
+- Red-line warnings/escalations.
+- Learning Phase Report and Meta-Learning Report.
+- Final BLUE endorsement plus memory consolidation actions.
+- Note remaining open risks or follow-ups.
+
+Active project = [your-project-name].
+Recall relevant preferences, policies, agents from JAUmemory.
+Execute end-to-end with full collaboration. Confirm diagnostics + memory updates before closing.

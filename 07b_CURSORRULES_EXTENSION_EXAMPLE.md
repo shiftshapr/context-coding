@@ -2,6 +2,42 @@
 
 **NOTE**: This file contains rules specific to **browser extension development**. Only use these if you're building a Chrome/Firefox/Edge extension. For other project types, use `07a_CURSORRULES_GENERIC.md` instead.
 
+## Source-Only Editing Policy (RED-LINE)
+
+**CRITICAL**: **NEVER edit files directly in `extension/`, `dist/`, or `build/` directories**. These are build artifacts that get overwritten on rebuild.
+
+### Required Workflow:
+- ✅ **ONLY edit TypeScript source files in `src/`**
+- ✅ **All changes MUST go through the build process**: `npm run build` (compiles `src/` → `dist/` → syncs to `extension/`)
+- ✅ **Verify changes by rebuilding**: After editing `src/`, always run the build command to update `dist/` and `extension/`
+
+### Prohibited:
+- ❌ **DO NOT** edit files directly in `extension/` - they are synced from `dist/`
+- ❌ **DO NOT** edit files directly in `dist/` or `build/` - they are compiled from `src/`
+- ❌ **DO NOT** manually copy files to `extension/`, `dist/`, or `build/` - use the build process
+- ❌ **DO NOT** make "quick fixes" in `extension/` or `dist/` - they will be lost on next build
+
+### Build Process:
+```bash
+# ✅ CORRECT: Edit source, then build
+1. Edit: src/features/MyFeature.ts
+2. Build: npm run build
+3. Verify: Check extension/features/MyFeature.js (synced from dist/)
+
+# ❌ WRONG: Direct edit of build artifacts
+1. Edit: extension/features/MyFeature.js  # Will be overwritten!
+```
+
+### Enforcement:
+- This is a **RED-LINE** policy - violations cause lost work and build inconsistencies
+- If you find yourself editing `extension/`, `dist/`, or `build/`, stop immediately and edit the corresponding `src/` file instead
+- The build process handles compilation and syncing automatically
+- All TypeScript source files live in `src/` - there are no exceptions
+
+### Exception Handling:
+- **Hand-authored JS files**: Some files are intentionally JavaScript (not TypeScript). These are listed in build scripts and are copied directly. Only edit these if they are explicitly marked as hand-authored.
+- **If unsure**: Check if a file exists in `src/` - if it does, edit that. If it doesn't, check build scripts to see if it's hand-authored.
+
 ## Extension Distribution Cleanliness (RED-LINE)
 
 **CRITICAL**: The distribution directory (e.g., `dist/`, `build/`, or `extension/`) that gets packaged and deployed must contain ONLY runtime files.
